@@ -1,0 +1,27 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "aula-sexto-editor",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./assets",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "durable_objects": {
+    "bindings": [{ "name": "SESSIONS", "class_name": "OAuthSessions" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["OAuthSessions"] }],
+  "vars": {
+    "EDITOR_ORIGIN": "",
+    "PUBLIC_ORIGIN": "",
+    "ACCESS_ISSUER": "",
+    "ACCESS_AUD": "",
+    "ACCESS_EMAIL": "",
+    "GITHUB_CLIENT_ID": "",
+    "GITHUB_LOGIN": "AlfonsoRey",
+    "GITHUB_SCOPE": "public_repo"
+  }
+}

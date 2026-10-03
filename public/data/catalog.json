@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "subjects": [
+    {
+      "id": "matematicas",
+      "title": "Matemáticas y lógica",
+      "description": "Números, formas y buenas preguntas. Ocho temas para practicar a tu ritmo con pistas y explicaciones.",
+      "topics": [
+        { "id": "calculo", "title": "Cálculo y divisibilidad", "description": "Opera con cuidado y encuentra conexiones entre los números.", "file": "/data/matematicas/calculo.json" },
+        { "id": "fracciones", "title": "Fracciones", "description": "Comprende las partes, las equivalencias y las operaciones.", "file": "/data/matematicas/fracciones.json" },
+        { "id": "decimales", "title": "Números decimales", "description": "Multiplica, divide y redondea sin perder de vista la coma.", "file": "/data/matematicas/decimales.json" },
+        { "id": "proporcionalidad", "title": "Porcentajes y proporciones", "description": "Descuentos, recetas y repartos con sentido.", "file": "/data/matematicas/proporcionalidad.json" },
+        { "id": "medida", "title": "Medidas y unidades", "description": "Distancias, tiempo y superficies: elige la unidad adecuada.", "file": "/data/matematicas/medida.json" },
+        { "id": "geometria", "title": "Geometría", "description": "Investiga perímetros, áreas, ángulos y volúmenes.", "file": "/data/matematicas/geometria.json" },
+        { "id": "datos", "title": "Datos y probabilidad", "description": "Interpreta datos y razona sobre lo que puede ocurrir.", "file": "/data/matematicas/datos.json" },
+        { "id": "logica", "title": "Lógica y problemas", "description": "Busca patrones, ordena ideas y explica tus decisiones.", "file": "/data/matematicas/logica.json" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "topic": "fracciones",
+  "exercises": [
+    {
+      "id": "fraccion-cantidad",
+      "title": "Tres cuartas partes",
+      "difficulty": "inicial",
+      "statement": "Calcula 3/4 de 280. Explica qué representan el 4 y el 3.",
+      "hints": ["El denominador indica en cuántas partes iguales divides el total.", "Encuentra un cuarto de 280 antes de tomar tres cuartos."],
+      "solution": "3/4 de 280 son 210.",
+      "steps": ["280 ÷ 4 = 70: cada cuarto contiene 70.", "70 × 3 = 210: tomamos tres de esas partes."],
+      "tags": ["fracción de una cantidad", "reparto"]
+    },
+    {
+      "id": "fraccion-irreducible",
+      "title": "La misma fracción, más sencilla",
+      "difficulty": "inicial",
+      "statement": "Simplifica 42/56 hasta obtener una fracción irreducible.",
+      "hints": ["Divide numerador y denominador por el mismo divisor común.", "14 divide tanto a 42 como a 56."],
+      "solution": "42/56 = 3/4.",
+      "steps": ["42 ÷ 14 = 3 y 56 ÷ 14 = 4.", "3 y 4 no tienen divisores comunes mayores que 1.", "Por eso 3/4 es irreducible y representa la misma cantidad."],
+      "tags": ["simplificar", "equivalentes", "divisores"]
+    },
+    {
+      "id": "sumar-fracciones",
+      "title": "Sumar partes del mismo tamaño",
+      "difficulty": "intermedio",
+      "statement": "Calcula 2/3 + 5/6. Da la respuesta como fracción irreducible y como número mixto.",
+      "hints": ["Necesitas denominadores iguales.", "2/3 equivale a 4/6."],
+      "solution": "2/3 + 5/6 = 3/2 = 1 1/2.",
+      "steps": ["2/3 = 4/6: multiplicamos numerador y denominador por 2.", "4/6 + 5/6 = 9/6.", "9/6 = 3/2 al dividir ambos términos por 3.", "3/2 contiene una unidad y media: 1 1/2."],
+      "tags": ["suma", "denominador común", "número mixto"]
+    },
+    {
+      "id": "agua-deposito",
+      "title": "El agua que queda",
+      "difficulty": "reto",
+      "statement": "Un depósito contiene agua hasta 4/5 de su capacidad. Se usa una cantidad igual a 1/10 de la capacidad total del depósito, no del agua que había. ¿Qué fracción de la capacidad queda ocupada?",
+      "hints": ["Resta fracciones referidas al mismo total: la capacidad del depósito.", "Expresa 4/5 en décimos."],
+      "solution": "Queda agua para 7/10 de la capacidad del depósito.",
+      "steps": ["4/5 = 8/10 de la capacidad.", "Se retira 1/10 de esa misma capacidad.", "8/10 − 1/10 = 7/10."],
+      "tags": ["resta", "capacidad", "fracciones"]
+    }
+  ]
+}

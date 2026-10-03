@@ -1,0 +1,23 @@
+{
+  "name": "aula-sexto",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "validate": "node scripts/validate-content.mjs",
+    "test": "node --test",
+    "browser:install": "node scripts/install-browser.mjs",
+    "test:browser": "playwright test",
+    "editor:prepare": "node scripts/prepare-editor.mjs",
+    "editor:check": "wrangler deploy --dry-run --config editor/wrangler.jsonc"
+  },
+  "dependencies": { "jose": "6.2.12" },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "decap-cms": "3.16.3",
+    "wrangler": "4.141.0",
+    "yaml": "2.8.3"
+  }
+}

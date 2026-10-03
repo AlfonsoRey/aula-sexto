@@ -1,0 +1,55 @@
+{
+  "topic": "geometria",
+  "exercises": [
+    {
+      "id": "rectangulo-medidas",
+      "title": "Borde y superficie",
+      "difficulty": "intermedio",
+      "statement": "Un rectángulo tiene lados de 12,5 m y 8 m. Calcula su perímetro y su área e indica las unidades de cada resultado.",
+      "hints": ["El perímetro suma los cuatro lados.", "El área multiplica dos dimensiones; su unidad es cuadrada."],
+      "solution": "Perímetro: 41 m. Área: 100 m².",
+      "steps": ["Perímetro = 2 × (12,5 + 8) = 2 × 20,5 = 41 m.", "Área = 12,5 × 8 = 100 m².", "El perímetro mide longitud y el área mide superficie."],
+      "tags": ["rectángulo", "perímetro", "área"]
+    },
+    {
+      "id": "triangulo-area",
+      "title": "La mitad de un rectángulo",
+      "difficulty": "intermedio",
+      "statement": "Un triángulo tiene una base de 14 cm y una altura perpendicular a esa base de 9 cm. ¿Cuál es su área?",
+      "hints": ["La altura debe ser perpendicular a la base.", "El área del triángulo es la mitad de base × altura."],
+      "solution": "El área es 63 cm².",
+      "steps": ["14 × 9 = 126 cm² sería el área del rectángulo asociado.", "126 ÷ 2 = 63 cm² es el área del triángulo."],
+      "tags": ["triángulo", "base", "altura", "área"]
+    },
+    {
+      "id": "caja-volumen",
+      "title": "El espacio dentro de una caja",
+      "difficulty": "reto",
+      "statement": "El interior de una caja es un prisma rectangular de 8 cm de largo, 5 cm de ancho y 3 cm de alto. Calcula su volumen en centímetros cúbicos.",
+      "hints": ["Primero calcula el área de la base.", "Multiplica esa área por la altura."],
+      "solution": "El volumen interior es 120 cm³.",
+      "steps": ["Área de la base = 8 × 5 = 40 cm².", "Volumen = 40 × 3 = 120 cm³.", "Son unidades cúbicas porque se multiplican tres longitudes."],
+      "tags": ["volumen", "prisma rectangular", "centímetros cúbicos"]
+    },
+    {
+      "id": "angulo-triangulo",
+      "title": "El ángulo que falta",
+      "difficulty": "inicial",
+      "statement": "Dos ángulos interiores de un triángulo miden 55° y 65°. ¿Cuánto mide el tercer ángulo?",
+      "hints": ["Los tres ángulos interiores suman 180°.", "Suma los dos conocidos y resta el resultado de 180°."],
+      "solution": "El tercer ángulo mide 60°.",
+      "steps": ["55° + 65° = 120°.", "180° − 120° = 60°.", "Comprueba: 55° + 65° + 60° = 180°."],
+      "tags": ["ángulos", "triángulo", "grados"]
+    },
+    {
+      "id": "cuadrado-inverso",
+      "title": "Del perímetro al área",
+      "difficulty": "reto",
+      "statement": "Un cuadrado tiene un perímetro de 36 cm. ¿Cuánto mide un lado y cuál es su área?",
+      "hints": ["En un cuadrado los cuatro lados son iguales.", "Después de hallar un lado, multiplícalo por sí mismo."],
+      "solution": "Cada lado mide 9 cm y el área es 81 cm².",
+      "steps": ["36 ÷ 4 = 9 cm por lado.", "Área = 9 × 9 = 81 cm².", "No hay que elevar el perímetro al cuadrado: el área depende del lado."],
+      "tags": ["cuadrado", "perímetro", "área", "problema inverso"]
+    }
+  ]
+}

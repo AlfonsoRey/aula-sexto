@@ -1,0 +1,11 @@
+node_modules/
+.wrangler/
+editor/.wrangler/
+editor/.dev.vars
+.env
+.env.*
+test-results/
+playwright-report/
+editor/assets/vendor/
+editor/assets/theme.js
+editor/assets/styles.css

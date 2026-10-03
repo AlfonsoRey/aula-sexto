@@ -1,0 +1,35 @@
+{
+  "topic": "decimales",
+  "exercises": [
+    {
+      "id": "producto-decimal",
+      "title": "Multiplicar con coma",
+      "difficulty": "intermedio",
+      "statement": "Calcula 12,75 × 3,2. Explica cómo sitúas la coma en el resultado.",
+      "hints": ["Multiplica primero 1 275 × 32.", "Entre los dos factores hay tres cifras decimales en total."],
+      "solution": "12,75 × 3,2 = 40,8.",
+      "steps": ["1 275 × 32 = 40 800.", "12,75 = 1 275/100 y 3,2 = 32/10: dividimos el producto entre 1 000.", "40 800 ÷ 1 000 = 40,800 = 40,8."],
+      "tags": ["multiplicación", "coma decimal"]
+    },
+    {
+      "id": "division-decimal",
+      "title": "Quitar la coma del divisor",
+      "difficulty": "reto",
+      "statement": "Calcula 58,32 ÷ 1,2 mediante una división equivalente con divisor entero.",
+      "hints": ["Multiplicar dividendo y divisor por el mismo número no cambia el cociente.", "Multiplica ambos por 10, no solo el divisor."],
+      "solution": "58,32 ÷ 1,2 = 48,6.",
+      "steps": ["58,32 ÷ 1,2 = 583,2 ÷ 12.", "12 × 48 = 576; queda 7,2.", "7,2 ÷ 12 = 0,6: el cociente es 48,6.", "Comprueba: 48,6 × 1,2 = 58,32."],
+      "tags": ["división", "divisor decimal", "equivalencia"]
+    },
+    {
+      "id": "redondeo-centesimas",
+      "title": "Una aproximación útil",
+      "difficulty": "inicial",
+      "statement": "Redondea 18,746 a las centésimas. ¿Qué cifra decide si aumentas la centésima?",
+      "hints": ["La centésima es la segunda cifra después de la coma.", "Mira la milésima: es un 6."],
+      "solution": "18,746 redondeado a las centésimas es 18,75.",
+      "steps": ["La centésima es el 4 en 18,746.", "La cifra siguiente es 6, que es mayor o igual que 5.", "Aumentamos el 4 a 5 y dejamos dos cifras decimales: 18,75."],
+      "tags": ["redondeo", "aproximación", "centésimas"]
+    }
+  ]
+}

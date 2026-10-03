@@ -1,0 +1,75 @@
+{
+  "topic": "logica",
+  "exercises": [
+    {
+      "id": "compra-cambio",
+      "title": "¿Cuánto cambio me dan?",
+      "difficulty": "reto",
+      "statement": "Compras 3 cuadernos a 2,40 € cada uno y un bolígrafo de 1,85 €. Pagas con 10 €. ¿Cuál es el total y cuánto cambio recibes?",
+      "hints": ["Multiplica el precio de un cuaderno por tres.", "Suma el bolígrafo antes de restar del dinero entregado."],
+      "solution": "El total es 9,05 € y el cambio es 0,95 €.",
+      "steps": ["3 × 2,40 = 7,20 € por los cuadernos.", "7,20 + 1,85 = 9,05 € de compra.", "10,00 − 9,05 = 0,95 € de cambio.", "Comprueba: 9,05 + 0,95 = 10,00 €."],
+      "tags": ["dinero", "cambio", "problema de varios pasos"]
+    },
+    {
+      "id": "serie-productos",
+      "title": "Un salto cada vez mayor",
+      "difficulty": "reto",
+      "statement": "Observa 2, 6, 12, 20, 30. Propón una regla sencilla que encaje con todos los términos y calcula el siguiente usando tu regla. Explica tu razonamiento.",
+      "hints": ["Las diferencias entre términos son 4, 6, 8 y 10.", "Una propuesta es aumentar cada salto en 2."],
+      "solution": "Una continuación coherente es 42: el siguiente salto sería 12.",
+      "steps": ["6 − 2 = 4; 12 − 6 = 6; 20 − 12 = 8; 30 − 20 = 10.", "Si los saltos aumentan en 2, el siguiente es 12.", "30 + 12 = 42. También encaja la regla n × (n + 1).", "Una lista finita admite otras reglas: una respuesta diferente debe explicar una regla que encaje con todos los datos."],
+      "tags": ["serie", "patrón", "diferencias"]
+    },
+    {
+      "id": "serie-doble",
+      "title": "Duplicar y ajustar",
+      "difficulty": "reto",
+      "statement": "Observa 5, 9, 17, 33, 65. Propón una regla sencilla que encaje con todos los términos y calcula el siguiente usando tu regla.",
+      "hints": ["Compara cada término con el doble del anterior.", "9 es 2 × 5 − 1; comprueba los demás."],
+      "solution": "Con la regla «duplicar y restar 1», el siguiente término es 129.",
+      "steps": ["5 × 2 − 1 = 9 y 9 × 2 − 1 = 17.", "17 × 2 − 1 = 33 y 33 × 2 − 1 = 65.", "65 × 2 − 1 = 129.", "Esta es una regla posible, no la única para una serie finita."],
+      "tags": ["serie", "patrón", "doble"]
+    },
+    {
+      "id": "numero-cifras",
+      "title": "Un número escondido",
+      "difficulty": "reto",
+      "statement": "Pienso en un número de dos cifras. La cifra de las decenas es el doble de la cifra de las unidades y ambas cifras suman 9. ¿Qué número es?",
+      "hints": ["Una parte corresponde a las unidades y dos partes a las decenas.", "Las tres partes juntas suman 9."],
+      "solution": "El número es 63.",
+      "steps": ["9 ÷ 3 = 3: la cifra de las unidades es 3.", "El doble es 6: la cifra de las decenas es 6.", "El número es 63; se cumple 6 + 3 = 9 y 6 = 2 × 3."],
+      "tags": ["cifras", "decenas", "deducción"]
+    },
+    {
+      "id": "cola-tres",
+      "title": "¿Quién está en medio?",
+      "difficulty": "inicial",
+      "statement": "En una fila solo están Lucía, Marcos y Nora. Lucía está antes que Marcos, y Marcos antes que Nora. ¿Quién ocupa el segundo puesto?",
+      "hints": ["Escribe los nombres de izquierda a derecha según las pistas.", "Marcos tiene una persona delante y otra detrás."],
+      "solution": "Marcos ocupa el segundo puesto.",
+      "steps": ["Lucía va antes que Marcos.", "Marcos va antes que Nora.", "La fila es Lucía, Marcos, Nora. El segundo es Marcos."],
+      "tags": ["orden", "deducción", "fila"]
+    },
+    {
+      "id": "patas-animales",
+      "title": "Patas en la granja",
+      "difficulty": "inicial",
+      "statement": "Hay 8 gallinas de dos patas y 3 conejos de cuatro patas, todos sin lesiones. ¿Cuántas patas hay en total?",
+      "hints": ["Calcula por separado las patas de cada especie.", "No multipliques todos los animales por el mismo número."],
+      "solution": "Hay 28 patas en total.",
+      "steps": ["8 × 2 = 16 patas de gallinas.", "3 × 4 = 12 patas de conejos.", "16 + 12 = 28 patas."],
+      "tags": ["recuento", "multiplicación", "animales"]
+    },
+    {
+      "id": "palillos-cuadrados",
+      "title": "Cuadrados que comparten lados",
+      "difficulty": "intermedio",
+      "statement": "Construyes una fila de cuadrados con palillos: el primero usa 4 y cada cuadrado nuevo comparte exactamente un lado con el anterior. ¿Cuántos palillos necesitas para 6 cuadrados?",
+      "hints": ["Cada cuadrado nuevo solo añade tres palillos.", "Después del primer cuadrado quedan cinco cuadrados por añadir."],
+      "solution": "Se necesitan 19 palillos.",
+      "steps": ["El primer cuadrado necesita 4 palillos.", "Los otros cinco añaden 3 palillos cada uno: 5 × 3 = 15.", "4 + 15 = 19 palillos.", "No usamos 6 × 4 porque los cinco lados compartidos solo se cuentan una vez."],
+      "tags": ["patrón", "palillos", "lados compartidos"]
+    }
+  ]
+}

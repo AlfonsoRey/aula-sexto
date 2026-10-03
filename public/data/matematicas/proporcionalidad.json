@@ -1,0 +1,45 @@
+{
+  "topic": "proporcionalidad",
+  "exercises": [
+    {
+      "id": "descuento-bicicleta",
+      "title": "Una bicicleta con descuento",
+      "difficulty": "intermedio",
+      "statement": "Una bicicleta cuesta 240 €. Le aplican un descuento del 15 % sobre ese precio. ¿Cuánto se descuenta y cuál es el precio final?",
+      "hints": ["El 15 % significa 15 de cada 100.", "Calcula el descuento y réstalo del precio inicial."],
+      "solution": "El descuento es 36 € y el precio final es 204 €.",
+      "steps": ["240 × 15 ÷ 100 = 36 € de descuento.", "240 − 36 = 204 €.", "El precio final equivale al 85 % del inicial."],
+      "tags": ["porcentaje", "descuento", "dinero"]
+    },
+    {
+      "id": "pasta-personas",
+      "title": "Pasta para siete",
+      "difficulty": "intermedio",
+      "statement": "Una receta utiliza 300 g de pasta para 4 personas. ¿Cuánta pasta necesitas para 7 personas si cada una recibe la misma cantidad que en la receta?",
+      "hints": ["Calcula primero la cantidad para una persona.", "Multiplica esa cantidad por 7."],
+      "solution": "Se necesitan 525 g de pasta.",
+      "steps": ["300 ÷ 4 = 75 g por persona.", "75 × 7 = 525 g.", "La proporción se conserva porque la ración individual no cambia."],
+      "tags": ["receta", "proporcionalidad directa", "gramos"]
+    },
+    {
+      "id": "libros-aventuras",
+      "title": "¿Qué porcentaje es de aventuras?",
+      "difficulty": "inicial",
+      "statement": "Una estantería contiene 24 libros; 18 son de aventuras. ¿Qué porcentaje de los libros son de aventuras?",
+      "hints": ["La parte de aventuras es 18/24.", "Simplifica la fracción: tres cuartos se puede expresar en centésimos."],
+      "solution": "El 75 % de los libros son de aventuras.",
+      "steps": ["18/24 = 3/4.", "3/4 = 75/100.", "75 de cada 100 equivale al 75 %."],
+      "tags": ["porcentaje", "fracción", "libros"]
+    },
+    {
+      "id": "entradas-iguales",
+      "title": "Cinco entradas",
+      "difficulty": "intermedio",
+      "statement": "Ocho entradas iguales cuestan en total 100 €. Sin descuentos ni recargos, ¿cuánto costarán cinco entradas?",
+      "hints": ["Halla el precio de una entrada.", "Conserva los céntimos al multiplicar por cinco."],
+      "solution": "Cinco entradas cuestan 62,50 €.",
+      "steps": ["100 ÷ 8 = 12,50 € por entrada.", "12,50 × 5 = 62,50 €."],
+      "tags": ["precio unitario", "proporcionalidad directa", "dinero"]
+    }
+  ]
+}
