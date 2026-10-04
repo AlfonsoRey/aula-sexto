@@ -1,0 +1,40 @@
+{
+  "topic": "cinematica-bachillerato",
+  "exercises": [],
+  "resources": [
+    {
+      "id": "bach-fisica-cinematica-actividades",
+      "title": "Cinemática · Ejercicios autoevaluables",
+      "statement": "PDF original de 21 páginas, en gallego. Incluye ejemplos sobre vectores de posición, velocidad media, aceleración y movimiento circular. Los enunciados y las explicaciones se consultan en la fuente, sin traducciones ni respuestas añadidas por esta web.",
+      "tags": ["cinemática", "vectores", "velocidad", "aceleración", "movimiento", "autoevaluación"],
+      "source": {
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "publisher": "Consellería de Cultura, Educación e O.U · Xunta de Galicia",
+        "locator": "Unidade 8 · actividades.pdf · Sección 8. Exercicios autoavaliables · 21 páginas",
+        "language": "Gallego",
+        "published": "04/07/2013 (fecha de la ficha del recurso)",
+        "license": "Creative Commons BY-NC-SA, según la ficha de la Xunta; aquí solo se enlaza",
+        "verifiedOn": "2026-10-04",
+        "notes": "La ficha lo cataloga como Física e Química de 1.º de Bachillerato. Material docente anterior al Decreto 157/2022, no examen oficial. No se han auditado todos los resultados del documento. El PDF puede mostrar respuestas al abrirlo."
+      }
+    },
+    {
+      "id": "bach-fisica-cinematica-apoyo",
+      "title": "Cinemática · Ejercicios de apoyo",
+      "statement": "PDF original de 4 páginas, en gallego, con ejercicios de sistemas de referencia y elementos del movimiento. Se conserva el documento externo, con sus unidades, datos y formulación originales.",
+      "tags": ["cinemática", "posición", "desplazamiento", "velocidad", "aceleración", "apoyo"],
+      "source": {
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/apoio.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "publisher": "Consellería de Cultura, Educación e O.U · Xunta de Galicia",
+        "locator": "Unidade 8 · apoio.pdf · Sección 8. Exercicios de apoio · 4 páginas",
+        "language": "Gallego",
+        "published": "04/07/2013 (fecha de la ficha del recurso)",
+        "license": "Creative Commons BY-NC-SA, según la ficha de la Xunta; aquí solo se enlaza",
+        "verifiedOn": "2026-10-04",
+        "notes": "La ficha lo cataloga como Física e Química de 1.º de Bachillerato. Material docente anterior al Decreto 157/2022, no examen oficial. No se han auditado todos los resultados del documento; contrástalos con el profesorado."
+      }
+    }
+  ]
+}

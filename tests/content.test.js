@@ -6,7 +6,7 @@ import { readContent } from "../scripts/validate-content.mjs";
 import { validateCatalog, validateTopic } from "../public/assets/content-validation.js";
 import { matches, normalize } from "../public/assets/practice.js";
 
-const { catalog, exercises } = await readContent();
+const { catalog, exercises, resources } = await readContent();
 const byId = Object.fromEntries(exercises.map((exercise) => [exercise.id, exercise]));
 const format = (value, decimals = 0) => new Intl.NumberFormat("es-ES", { minimumFractionDigits: decimals, maximumFractionDigits: 3, useGrouping: value >= 10000 }).format(value);
 
@@ -124,7 +124,7 @@ test("Búsqueda con acentos, combinada, sin buscar soluciones", () => {
 });
 test("Referencias de cursos únicas, existentes y completas", () => {
   assert.equal(catalog.version, 2);
-  assert.deepEqual(catalog.courses.map((course) => course.id), ["sexto", "tercero"]);
+  assert.deepEqual(catalog.courses.map((course) => course.id), ["sexto", "tercero", "bachillerato-galicia"]);
   for (const change of [
     (copy) => { copy.courses[1].id = "sexto"; },
     (copy) => { copy.courses[0].subjects.push("no-existe"); },
@@ -170,4 +170,50 @@ test("Rechazar rutas ajenas, duplicados, dificultad y contenido HTML", () => {
   data.exercises[0].statement = "Texto";
   data.exercises.push(structuredClone(data.exercises[0]));
   assert.throws(() => validateTopic(data, topic), /duplicado/);
+});
+
+test("Bachillerato enlaza fuentes, no inventa ejercicios, con región y procedencia", () => {
+  const course = catalog.courses.find((item) => item.id === "bachillerato-galicia");
+  assert.equal(course.region, "Galicia");
+  assert.deepEqual(course.subjects, ["matematicas-bachillerato", "fisica-bachillerato"]);
+  assert.equal(exercises.filter((item) => course.subjects.includes(item.subject)).length, 0);
+  assert.equal(resources.length, 3);
+  assert.equal(resources.filter((item) => item.subject === "matematicas-bachillerato").length, 1);
+  assert.equal(resources.filter((item) => item.subject === "fisica-bachillerato").length, 2);
+  assert.ok(resources[0].source.url.includes("PENDIENTES%20MATEM%C3%81TICAS%20I_0.pdf"));
+  assert.ok(resources[0].source.license.includes("no verificado"));
+  for (const resource of resources) {
+    assert.ok(resource.source.locator);
+    assert.ok(resource.source.notes.includes("No se han auditado"));
+    assert.equal(resource.source.verifiedOn, "2026-10-04");
+    assert.equal(resource.solution, undefined);
+    assert.equal(resource.difficulty, undefined);
+  }
+  assert.equal(matches(resources[0], { search: "TRIÁNGULOS" }), true);
+  assert.equal(matches(resources[0], { difficulty: "inicial" }), false);
+});
+test("Documentos externos rechazan URL insegura, fecha inválida, HTML y respuestas", () => {
+  const topic = catalog.subjects.find((item) => item.id === "matematicas-bachillerato").topics[0];
+  const valid = { topic: topic.id, exercises: [], resources: [structuredClone(resources[0])] };
+  assert.doesNotThrow(() => validateTopic(valid, topic));
+  for (const url of ["javascript:alert(1)", "http://www.edu.xunta.gal/file.pdf",
+    "https://www.edu.xunta.gal.evil.example/file.pdf", "https://user:pass@www.edu.xunta.gal/file.pdf"]) {
+    const invalid = structuredClone(valid);
+    invalid.resources[0].source.url = url;
+    assert.throws(() => validateTopic(invalid, topic), /URL/);
+  }
+  for (const change of [
+    (copy) => { copy.resources[0].source.verifiedOn = "2026-02-30"; },
+    (copy) => { copy.resources[0].source.publisher = "<script>alert(1)</script>"; },
+    (copy) => { copy.resources[0].solution = "Respuesta inventada"; },
+    (copy) => { copy.resources.push(structuredClone(copy.resources[0])); },
+    (copy) => { copy.resources = []; }
+  ]) {
+    const invalid = structuredClone(valid);
+    change(invalid);
+    assert.throws(() => validateTopic(invalid, topic));
+  }
+  const invalidCourse = structuredClone(catalog);
+  delete invalidCourse.courses[2].region;
+  assert.throws(() => validateCatalog(invalidCourse), /Territorio/);
 });

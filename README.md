@@ -2,7 +2,11 @@
 
 Web educativa independiente en español para tercero y sexto de Primaria, Comunidad de Madrid. **No es una web oficial del CEIPSO Príncipe Felipe** ni cuenta con su aval. Incluye 63 ejercicios originales con pistas progresivas y explicaciones paso a paso: 43 de sexto (los 33 anteriores y 10 nuevos) y 20 de tercero.
 
+Incluye también una pantalla de **1.º de Bachillerato de Galicia**, modalidad Ciencias y Tecnología: Matemáticas I y Física (dentro de Física y Química). Es una selección inicial de **3 documentos externos con ejercicios existentes**, no un banco de ejercicios integrados ni cobertura completa del currículo. No se inventan enunciados, pistas, niveles ni soluciones para estos documentos.
+
 La portada permite elegir curso antes de entrar en materias y temas. Cada curso tiene una pantalla independiente y un enlace directo: `/#/curso/sexto` y `/#/curso/tercero`. Se puede volver a la portada y usar Atrás/Adelante del navegador. No requiere reglas de redirección ni un build en Pages. Cambiar de curso limpia filtros, cajones abiertos y respuestas reveladas; los resultados y la impresión no mezclan cursos.
+
+El nuevo enlace es `/#/curso/bachillerato-galicia`. Muestra Galicia, no Madrid, y separa las dos materias. Los documentos se buscan por título, descripción y etiquetas. No reciben un nivel ficticio: la dificultad se deshabilita en materias sin ejercicios integrados.
 
 ## Web pública sin build
 
@@ -48,7 +52,7 @@ El workflow `Validar aula / validar` comprueba contenido, lógica, autenticació
 
 ## Contenido y ampliación
 
-`public/data/catalog.json` (formato versión 2) enumera cursos, materias y temas. Cada curso tiene un `id`, `title`, `description` y una lista `subjects` con los IDs de sus materias. Cada materia debe pertenecer a exactamente un curso: sexto usa `matematicas` (se conservan todos los ejercicios y rutas anteriores) y tercero usa `matematicas-tercero`. Cada tema apunta a `/data/ID_MATERIA/ID_TEMA.json`; contiene `topic` y una lista `exercises`. Cada ejercicio tiene:
+`public/data/catalog.json` (formato versión 2) enumera cursos, materias y temas. Cada curso tiene un `id`, `title`, `region`, `description` y una lista `subjects` con los IDs de sus materias. Cada materia debe pertenecer a exactamente un curso: sexto usa `matematicas` (se conservan todos los ejercicios y rutas anteriores), tercero usa `matematicas-tercero` y Bachillerato usa `matematicas-bachillerato` y `fisica-bachillerato`. Cada tema apunta a `/data/ID_MATERIA/ID_TEMA.json`; contiene `topic` y una lista `exercises`. Cada ejercicio tiene:
 
 | Campo | Uso |
 | --- | --- |
@@ -62,6 +66,24 @@ El workflow `Validar aula / validar` comprueba contenido, lógica, autenticació
 | `chart` (opcional) | `caption`, `categoryLabel`, `valueLabel` y `values` con `label` y `value` |
 
 Contenido de texto, **sin HTML**. Se valida tanto localmente/CI como al cargar el sitio, y se renderiza con `textContent`. Si falla un archivo, la web muestra un error y permite reintentar; no sirve una lista parcial aparentando éxito.
+
+Un tema puede añadir `resources`: documentos externos con `id`, `title`, `statement` (descripción), `tags` y `source` (`url`, `recordUrl` opcional, `publisher`, `locator`, `language`, `published`, `license`, `verifiedOn` ISO y `notes`). `exercises` puede estar vacío solo si hay recursos. IDs únicos también entre ejercicios y recursos. Las URLs se limitan a HTTPS sin credenciales en `recursos.edu.xunta.gal` y `www.edu.xunta.gal`; ampliar esta lista requiere revisión. Los recursos no admiten campos de solución, pistas o dificultad.
+
+La interfaz distingue recuentos de ejercicios y documentos. No descarga ni incrusta los PDFs: abrir un enlace, en nueva pestaña sin referente, accede a un tercero con su propia privacidad. Los PDFs pueden incluir respuestas visibles. **Nunca se incluyen en la hoja «Imprimir ejercicios»**: no podemos garantizar impresión sin soluciones de un documento externo. En materias solo de documentos, ese botón queda deshabilitado.
+
+### Fuentes de Bachillerato y límites
+
+Comprobados el 04/10/2026 mediante acceso al PDF, portada/sección y número de páginas:
+
+| Materia | Fuente | Documento |
+| --- | --- | --- |
+| Matemáticas I | [IES Álvaro Cunqueiro, portal de centros de la Xunta](https://www.edu.xunta.gal/centros/iesalvarocunqueiro/system/files/PENDIENTES%20MATEM%C3%81TICAS%20I_0.pdf) | Cuaderno de refuerzo para 1.º de Bachillerato de Ciencias, 22 páginas; español |
+| Física | [Ficha Cinemática de la Xunta](https://recursos.edu.xunta.gal/es/recurso/cinematica) | `Unidade08/arquivos/actividades.pdf`, 21 páginas; gallego |
+| Física | Misma ficha | `Unidade08/arquivos/apoio.pdf`, 4 páginas; gallego |
+
+Son materiales docentes publicados en sitios educativos públicos, **no exámenes oficiales ni aval de esta web**. En Matemáticas no se ha verificado permiso de reproducción: se enlaza, sin copiar. La ficha de Física atribuye el recurso a la Consellería de Cultura, Educación e O.U e indica Creative Commons BY-NC-SA; tampoco se reproduce aquí.
+
+La ficha de Física está fechada el 04/07/2013 y la portada del cuaderno de Matemáticas no acredita actualización curricular. La referencia de etapa es el [Decreto 157/2022 de Galicia](https://www.xunta.gal/dog/Publicados/2022/20220926/AnuncioG0655-190922-0003_es.html); no se ha realizado una auditoría integral de adecuación ni de todos los resultados originales. Consultar el profesorado. No usar PAU/ABAU de segundo como si fuera una prueba de primero. Se descartó el recurso genérico de Matemáticas de 2013 del repositorio para no confundir modalidad con Matemáticas I.
 
 Para añadir ejercicios, editar el JSON del tema o su lista en Decap. Para añadir cursos/materias/temas, crear sus archivos de contenido, actualizar el catálogo (incluida la asignación de materias a cursos) y añadir las colecciones de archivos correspondientes en `editor/assets/config.yml`. Mantener las rutas sincronizadas, actualizar pruebas de recuento cuando cambie la colección inicial y ejecutar validación antes de publicar. La navegación se genera del catálogo, sin modificar la lógica de la interfaz.
 
