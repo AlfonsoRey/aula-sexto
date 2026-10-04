@@ -18,6 +18,12 @@ function slug(value, label) {
 function list(value, label, max = 200) {
   check(Array.isArray(value) && value.length > 0 && value.length <= max, `${label}: lista vacía o demasiado larga`);
 }
+function sourceUrl(value, label) {
+  text(value, label, 1000);
+  const url = new URL(value);
+  check(url.protocol === "https:" && !url.username && !url.password && !url.port &&
+    ["recursos.edu.xunta.gal", "www.edu.xunta.gal"].includes(url.hostname), `${label}: URL de fuente no permitida`);
+}
 
 export function validateCatalog(catalog) {
   object(catalog, "Catálogo");
@@ -52,6 +58,7 @@ export function validateCatalog(catalog) {
     check(!courses.has(course.id), `Curso duplicado: ${course.id}`);
     courses.add(course.id);
     text(course.title, "Título de curso", 120);
+    text(course.region, "Territorio del curso", 120);
     text(course.description, "Descripción de curso");
     list(course.subjects, "Materias del curso", 30);
     for (const id of course.subjects) {
@@ -67,7 +74,32 @@ export function validateCatalog(catalog) {
 export function validateTopic(data, topic, seen = new Set()) {
   object(data, `Archivo ${topic.id}`);
   check(data.topic === topic.id, `El archivo no corresponde al tema ${topic.id}`);
-  list(data.exercises, `Ejercicios de ${topic.id}`);
+  check(Array.isArray(data.exercises) && data.exercises.length <= 200, `Ejercicios de ${topic.id}: lista inválida`);
+  if (data.resources !== undefined) list(data.resources, `Recursos de ${topic.id}`, 40);
+  check(data.exercises.length > 0 || data.resources?.length > 0, `Tema ${topic.id}: lista vacía`);
+  for (const resource of data.resources || []) {
+    object(resource, "Recurso externo");
+    slug(resource.id, "Recurso id");
+    check(!seen.has(resource.id), `Recurso duplicado: ${resource.id}`);
+    seen.add(resource.id);
+    text(resource.title, `${resource.id}: título`, 160);
+    text(resource.statement, `${resource.id}: descripción`);
+    list(resource.tags, `${resource.id}: etiquetas`, 12);
+    resource.tags.forEach((tag) => text(tag, "Etiqueta de recurso", 80));
+    for (const key of ["difficulty", "solution", "steps", "hints", "chart"]) {
+      check(resource[key] === undefined, `${resource.id}: un recurso externo no es un ejercicio (${key})`);
+    }
+    object(resource.source, `${resource.id}: procedencia`);
+    sourceUrl(resource.source.url, "URL del documento");
+    if (resource.source.recordUrl !== undefined) sourceUrl(resource.source.recordUrl, "URL de la ficha");
+    for (const key of ["publisher", "locator", "language", "published", "license", "notes"]) {
+      text(resource.source[key], `${resource.id}: ${key}`);
+    }
+    const date = resource.source.verifiedOn;
+    check(typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date) &&
+      Number.isFinite(Date.parse(date)) && new Date(date).toISOString().slice(0, 10) === date,
+    `${resource.id}: fecha de comprobación inválida`);
+  }
   for (const exercise of data.exercises) {
     object(exercise, "Ejercicio");
     slug(exercise.id, "Ejercicio id");

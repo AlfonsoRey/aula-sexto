@@ -1,8 +1,9 @@
 {
   "version": 2,
   "courses": [
-    { "id": "sexto", "title": "6.º de Primaria", "description": "Afianza lo que sabes y atrévete con nuevos retos de matemáticas y lógica.", "subjects": ["matematicas"] },
-    { "id": "tercero", "title": "3.º de Primaria", "description": "Descubre números, medidas, formas y problemas cotidianos, paso a paso.", "subjects": ["matematicas-tercero"] }
+    { "id": "sexto", "title": "6.º de Primaria", "region": "Comunidad de Madrid", "description": "Afianza lo que sabes y atrévete con nuevos retos de matemáticas y lógica.", "subjects": ["matematicas"] },
+    { "id": "tercero", "title": "3.º de Primaria", "region": "Comunidad de Madrid", "description": "Descubre números, medidas, formas y problemas cotidianos, paso a paso.", "subjects": ["matematicas-tercero"] },
+    { "id": "bachillerato-galicia", "title": "1.º de Bachillerato", "region": "Galicia", "description": "Ciencias y Tecnología: Matemáticas I y Física (parte de Física y Química). Documentos originales con ejercicios, publicados en portales educativos de Galicia; sin enunciados ni soluciones inventados.", "subjects": ["matematicas-bachillerato", "fisica-bachillerato"] }
   ],
   "subjects": [
     {
@@ -30,6 +31,22 @@
         { "id": "problemas-tercero", "title": "Problemas y fracciones sencillas", "description": "Piensa qué operación necesitas y descubre partes iguales.", "file": "/data/matematicas-tercero/problemas-tercero.json" },
         { "id": "medidas-tercero", "title": "Medidas, tiempo y dinero", "description": "Usa metros, gramos, litros, horas y euros en situaciones cercanas.", "file": "/data/matematicas-tercero/medidas-tercero.json" },
         { "id": "formas-datos-tercero", "title": "Formas, datos y lógica", "description": "Explora figuras, interpreta tablas y descubre patrones.", "file": "/data/matematicas-tercero/formas-datos-tercero.json" }
+      ]
+    },
+    {
+      "id": "matematicas-bachillerato",
+      "title": "Matemáticas I",
+      "description": "Cuaderno de refuerzo para 1.º de Bachillerato de Ciencias alojado por el IES Álvaro Cunqueiro. Se enlaza el original; no se reproduce su contenido.",
+      "topics": [
+        { "id": "algebra-trigonometria-bachillerato", "title": "Álgebra y trigonometría", "description": "Selección inicial, no cobertura completa de Matemáticas I. La publicación en un centro público no convierte estos ejercicios en un examen oficial.", "file": "/data/matematicas-bachillerato/algebra-trigonometria-bachillerato.json" }
+      ]
+    },
+    {
+      "id": "fisica-bachillerato",
+      "title": "Física · Física y Química",
+      "description": "Hojas originales de cinemática del repositorio educativo de la Xunta, catalogadas para 1.º de Bachillerato, en gallego.",
+      "topics": [
+        { "id": "cinematica-bachillerato", "title": "Cinemática", "description": "Material docente de 2013: referencia, movimiento rectilíneo y circular. No es un examen oficial ni una colección revisada íntegramente frente al currículo de 2022.", "file": "/data/fisica-bachillerato/cinematica-bachillerato.json" }
       ]
     }
   ]

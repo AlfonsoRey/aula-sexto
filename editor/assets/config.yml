@@ -34,6 +34,7 @@ collections:
             fields:
               - { name: id, label: ID de curso, widget: string, pattern: ['^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$', "Usa un ID estable sin tildes."] }
               - { name: title, label: Nombre del curso, widget: string }
+              - { name: region, label: Comunidad autónoma, widget: string }
               - { name: description, label: Descripción, widget: text }
               - { name: subjects, label: IDs de materias del curso, widget: list, hint: "Cada materia debe existir y pertenecer a un único curso." }
           - name: subjects
@@ -172,3 +173,43 @@ collections:
         fields:
           - { name: topic, label: Tema, widget: hidden, default: formas-datos-tercero }
           - *exercises
+  - name: bachillerato-fuentes
+    label: 1.º Bachillerato · Documentos originales de Galicia
+    publish: false
+    files:
+      - name: algebra-trigonometria-bachillerato
+        label: Matemáticas I · Álgebra y trigonometría
+        file: public/data/matematicas-bachillerato/algebra-trigonometria-bachillerato.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: algebra-trigonometria-bachillerato }
+          - { name: exercises, label: Ejercicios integrados, widget: hidden, default: [] }
+          - &resources
+            name: resources
+            label: Documentos externos (no ejercicios integrados)
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID único y estable, widget: string, pattern: ['^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$', "Usa minúsculas y guiones."] }
+              - { name: title, label: Título, widget: string }
+              - { name: statement, label: Descripción del documento (no copiar enunciados), widget: text }
+              - { name: tags, label: Etiquetas de búsqueda, widget: list }
+              - name: source
+                label: Procedencia comprobada
+                widget: object
+                fields:
+                  - { name: url, label: URL HTTPS del original, widget: string, hint: "Solo recursos.edu.xunta.gal o www.edu.xunta.gal; comprobar el documento antes de guardar." }
+                  - { name: recordUrl, label: URL de ficha (opcional), widget: string, required: false }
+                  - { name: publisher, label: Publicado por (no asumir autoría), widget: string }
+                  - { name: locator, label: Archivo y localizador, widget: text }
+                  - { name: language, label: Idioma del original, widget: string }
+                  - { name: published, label: Fecha de publicación o limitación conocida, widget: string }
+                  - { name: license, label: Licencia y límites de uso, widget: text }
+                  - { name: verifiedOn, label: Fecha de comprobación (AAAA-MM-DD), widget: string, pattern: ['^\d{4}-\d{2}-\d{2}$', "Formato AAAA-MM-DD."] }
+                  - { name: notes, label: Limitaciones y advertencias, widget: text }
+      - name: cinematica-bachillerato
+        label: Física · Cinemática
+        file: public/data/fisica-bachillerato/cinematica-bachillerato.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: cinematica-bachillerato }
+          - { name: exercises, label: Ejercicios integrados, widget: hidden, default: [] }
+          - *resources

@@ -1,0 +1,22 @@
+{
+  "topic": "algebra-trigonometria-bachillerato",
+  "exercises": [],
+  "resources": [
+    {
+      "id": "bach-matematicas-cuaderno-refuerzo",
+      "title": "Cuaderno de refuerzo · Matemáticas I",
+      "statement": "Documento PDF de 22 páginas. La portada identifica 1.º de Bachillerato de Ciencias y un primer cuaderno de álgebra, razones y ecuaciones trigonométricas, resolución de triángulos y teoremas de los senos y del coseno. Consulta los enunciados directamente en el documento original.",
+      "tags": ["álgebra", "trigonometría", "triángulos", "seno", "coseno", "matemáticas I"],
+      "source": {
+        "url": "https://www.edu.xunta.gal/centros/iesalvarocunqueiro/system/files/PENDIENTES%20MATEM%C3%81TICAS%20I_0.pdf",
+        "publisher": "IES Álvaro Cunqueiro · portal de centros de la Xunta de Galicia",
+        "locator": "PENDIENTES MATEMÁTICAS I_0.pdf · portada, Cuaderno 1 · 22 páginas",
+        "language": "Español",
+        "published": "Fecha de publicación no indicada en la portada",
+        "license": "Permiso de reproducción no verificado; solo enlace al original",
+        "verifiedOn": "2026-10-04",
+        "notes": "Material de refuerzo alojado por un centro público, no examen oficial de la Xunta. La portada no acredita una revisión conforme al Decreto 157/2022. No se han auditado todos los resultados del documento."
+      }
+    }
+  ]
+}

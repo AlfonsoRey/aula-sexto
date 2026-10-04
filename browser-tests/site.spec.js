@@ -125,7 +125,7 @@ test("Tema oscuro y zoom de contenido al 200 % mantienen legibilidad", async ({ 
 });
 test("Portada por cursos y pantallas independientes con Atrás y enlaces directos", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator("#catalog-status")).toContainText("2 cursos");
+    await expect(page.locator("#catalog-status")).toContainText("3 cursos");
     await page.screenshot({ path: test.info().outputPath("courses-home.png"), fullPage: true });
     await expect(page.locator("#course-screen")).toBeHidden();
     await expect(page.locator(".exercise")).toHaveCount(0);
@@ -173,6 +173,65 @@ test("Portada por cursos y pantallas independientes con Atrás y enlaces directo
     await expect(page.locator("#print-view")).toContainText("Manzana");
     expect(await page.locator("#print-view").textContent()).not.toContain("6.º");
   });
+test("Bachillerato: fuentes verificables, materias aisladas y sin respuestas inventadas", async ({ page }) => {
+  const origins = new Set();
+  page.on("request", (request) => origins.add(new URL(request.url()).origin));
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto("/#/curso/bachillerato-galicia");
+  await expect(page.locator("#course-title")).toHaveText("1.º de Bachillerato");
+  await expect(page.locator("#course-region")).toHaveText("Tu curso · Galicia");
+  await expect(page.locator("#header-note")).toContainText("Galicia");
+  await expect(page.locator("#result-count")).toContainText("0 ejercicios disponibles. 1 documento externo");
+  await expect(page.locator("[data-exercise]")).toHaveCount(0);
+  await expect(page.locator("[data-resource]")).toHaveCount(1);
+  await expect(page.getByLabel("Dificultad", { exact: true })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Imprimir ejercicios" })).toBeDisabled();
+  await expect(page.locator("#print-view")).toBeEmpty();
+  await expect(page.locator("#resource-note")).toContainText("no todo el temario ni exámenes oficiales");
+  await page.getByLabel("¿Qué quieres practicar?").fill("triángulos");
+  const maths = page.locator('[data-resource="bach-matematicas-cuaderno-refuerzo"]');
+  await expect(maths).toContainText("no examen oficial");
+  const link = maths.getByRole("link", { name: "Abrir PDF original:" });
+  await expect(link).toHaveAttribute("href", /PENDIENTES%20MATEM%C3%81TICAS%20I_0.pdf$/);
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  await expect(maths.getByRole("button")).toHaveCount(0);
+  await page.locator('button[data-subject="fisica-bachillerato"]').click();
+  await expect(page.locator("[data-resource]")).toHaveCount(2);
+  await expect(page.locator("#result-count")).toContainText("2 documentos externos");
+  await expect(page.getByLabel("¿Qué quieres practicar?")).toHaveValue("");
+  await page.getByLabel("¿Qué quieres practicar?").fill("velocidad");
+  await expect(page.locator("[data-resource]")).toHaveCount(2);
+  await expect(page.locator("#results")).toContainText("04/07/2013");
+  await expect(page.locator("#results")).toContainText("Gallego");
+  await expect(page.locator("#results")).toContainText("Creative Commons BY-NC-SA");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  expect([...origins]).toEqual(["http://127.0.0.1:4173"]);
+  await page.getByLabel("¿Qué quieres practicar?").fill("ningún-documento");
+  await expect(page.locator("[data-resource]")).toHaveCount(0);
+  await expect(page.locator("#results")).toContainText("No hay ejercicios ni documentos");
+  await page.getByRole("link", { name: "Elegir otro curso" }).click();
+  await page.getByRole("link", { name: "Entrar en 6.º de Primaria" }).click();
+  await expect(page.locator("#course-region")).toContainText("Comunidad de Madrid");
+  await expect(page.getByLabel("Dificultad", { exact: true })).toBeEnabled();
+  await expect(page.locator("#resource-note")).toBeHidden();
+  await expect(page.locator("[data-resource]")).toHaveCount(0);
+  await expect(page.locator("[data-exercise]")).toHaveCount(43);
+  await expect(page.locator("#print-view .print-exercise")).toHaveCount(43);
+});
+
+test("Fuente externa inválida provoca error explícito y no catálogo parcial", async ({ page }) => {
+  await page.route("**/data/fisica-bachillerato/cinematica-bachillerato.json", async (route) => {
+    const response = await route.fetch();
+    const data = await response.json();
+    data.resources[0].source.url = "javascript:alert(1)";
+    await route.fulfill({ json: data });
+  });
+  await page.goto("/#/curso/bachillerato-galicia");
+  await expect(page.getByRole("alert")).toContainText("contenido válido");
+  await expect(page.locator("[data-resource], [data-exercise]")).toHaveCount(0);
+});
+
 test("Decap carga configuración local sin autorizar ni guardar en GitHub", async ({ page }) => {
   const root = new URL("../editor/assets/", import.meta.url);
   const env = {
