@@ -1,0 +1,45 @@
+{
+  "topic": "problemas-tercero",
+  "exercises": [
+    {
+      "id": "tercero-mitad", "title": "La mitad para compartir", "difficulty": "inicial",
+      "statement": "Hay 18 pegatinas y das la mitad a una amiga. ¿Cuántas pegatinas le das?",
+      "hints": ["La mitad es una de dos partes iguales.", "Divide 18 entre 2."],
+      "solution": "Le das 9 pegatinas.",
+      "steps": ["18 ÷ 2 = 9.", "Las dos mitades son iguales: 9 + 9 = 18."],
+      "tags": ["mitad", "fracciones sencillas", "reparto"]
+    },
+    {
+      "id": "tercero-cuartos", "title": "Partes de una pizza", "difficulty": "inicial",
+      "statement": "Una pizza se divide en 4 partes iguales. Comes 1 parte. ¿Qué fracción has comido y qué fracción queda?",
+      "hints": ["El denominador cuenta todas las partes iguales.", "Después de comer una parte, quedan tres."],
+      "solution": "Has comido 1/4 y quedan 3/4.",
+      "steps": ["Cada parte es un cuarto: 1/4.", "De cuatro partes quedan tres: 3/4.", "Un cuarto comido y tres cuartos restantes completan la pizza."],
+      "tags": ["cuartos", "fracción", "partes iguales"]
+    },
+    {
+      "id": "tercero-autobuses", "title": "Plazas para la excursión", "difficulty": "reto",
+      "statement": "Hay 3 autobuses con 28 plazas cada uno. Viajan 76 personas. ¿Cuántas plazas quedan libres?",
+      "hints": ["Calcula las plazas totales antes de restar.", "Después quita las plazas ocupadas por las 76 personas."],
+      "solution": "Quedan 8 plazas libres.",
+      "steps": ["3 × 28 = 84 plazas en total.", "84 − 76 = 8 plazas libres."],
+      "tags": ["problema de dos pasos", "multiplicación", "resta"]
+    },
+    {
+      "id": "tercero-bolsas", "title": "Bolsas completas", "difficulty": "intermedio",
+      "statement": "Tienes 29 canicas y guardas 4 en cada bolsa. ¿Cuántas bolsas completas puedes llenar y cuántas canicas quedan fuera?",
+      "hints": ["Busca el mayor múltiplo de 4 que no supere 29.", "La diferencia será lo que sobra."],
+      "solution": "Llenas 7 bolsas completas y sobra 1 canica.",
+      "steps": ["4 × 7 = 28 y 4 × 8 = 32, que supera 29.", "Puedes llenar 7 bolsas.", "29 − 28 = 1 canica fuera de las bolsas."],
+      "tags": ["división", "resto", "canicas"]
+    },
+    {
+      "id": "tercero-comparacion", "title": "¿Cuántos más?", "difficulty": "intermedio",
+      "statement": "Un equipo reúne 135 tapones y otro 98. ¿Cuántos tapones más reúne el primero?",
+      "hints": ["No te piden el total, sino la diferencia.", "Puedes contar desde 98 hasta 135."],
+      "solution": "El primero reúne 37 tapones más.",
+      "steps": ["De 98 a 100 hay 2.", "De 100 a 135 hay 35.", "2 + 35 = 37; también 135 − 98 = 37."],
+      "tags": ["comparación", "diferencia", "resta"]
+    }
+  ]
+}

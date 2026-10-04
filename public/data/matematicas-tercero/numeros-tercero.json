@@ -1,0 +1,45 @@
+{
+  "topic": "numeros-tercero",
+  "exercises": [
+    {
+      "id": "tercero-valor-posicional", "title": "Construye el número", "difficulty": "inicial",
+      "statement": "¿Qué número tiene 4 unidades de millar, 2 centenas, 6 decenas y 3 unidades? Escríbelo como suma.",
+      "hints": ["Una unidad de millar vale 1 000.", "Las decenas valen 10 cada una."],
+      "solution": "El número es 4 263 = 4 000 + 200 + 60 + 3.",
+      "steps": ["4 unidades de millar son 4 000.", "2 centenas son 200 y 6 decenas son 60.", "4 000 + 200 + 60 + 3 = 4 263."],
+      "tags": ["numeración", "millares", "centenas", "decenas"]
+    },
+    {
+      "id": "tercero-suma", "title": "Libros en dos estantes", "difficulty": "inicial",
+      "statement": "En un estante hay 248 libros y en otro 175. ¿Cuántos libros hay entre los dos?",
+      "hints": ["Suma unidades con unidades, decenas con decenas.", "8 + 5 = 13: agrupa 10 unidades en una decena."],
+      "solution": "Hay 423 libros.",
+      "steps": ["248 + 100 = 348.", "348 + 70 = 418.", "418 + 5 = 423 libros."],
+      "tags": ["suma", "llevadas", "libros"]
+    },
+    {
+      "id": "tercero-resta", "title": "Cromos que quedan", "difficulty": "intermedio",
+      "statement": "Una caja tenía 602 cromos. Se han repartido 278. ¿Cuántos quedan?",
+      "hints": ["Para hallar lo que queda, resta lo repartido.", "Puedes quitar 200, después 70 y después 8."],
+      "solution": "Quedan 324 cromos.",
+      "steps": ["602 − 200 = 402.", "402 − 70 = 332.", "332 − 8 = 324.", "Comprueba: 324 + 278 = 602."],
+      "tags": ["resta", "reagrupación", "cromos"]
+    },
+    {
+      "id": "tercero-multiplicacion", "title": "Seis cajas iguales", "difficulty": "intermedio",
+      "statement": "Cada caja tiene 24 lápices. ¿Cuántos lápices hay en 6 cajas iguales?",
+      "hints": ["Puedes multiplicar 24 por 6.", "24 = 20 + 4: multiplica cada parte."],
+      "solution": "Hay 144 lápices.",
+      "steps": ["20 × 6 = 120.", "4 × 6 = 24.", "120 + 24 = 144 lápices."],
+      "tags": ["multiplicación", "tablas", "lápices"]
+    },
+    {
+      "id": "tercero-division", "title": "Repartir sin que sobre", "difficulty": "inicial",
+      "statement": "Reparte 56 fichas en 7 grupos iguales. ¿Cuántas fichas tendrá cada grupo?",
+      "hints": ["Busca qué número multiplicado por 7 da 56.", "Piensa en la tabla del 7."],
+      "solution": "Cada grupo tendrá 8 fichas.",
+      "steps": ["7 × 8 = 56.", "Por eso 56 ÷ 7 = 8.", "No sobra ninguna ficha."],
+      "tags": ["división", "reparto", "tabla del siete"]
+    }
+  ]
+}

@@ -3,8 +3,8 @@ import { readFile } from "node:fs/promises";
 import { createHandler } from "../editor/src/worker.js";
 
 async function ready(page) {
-  await page.goto("/");
-  await expect(page.getByRole("status")).toContainText("33 ejercicios disponibles");
+  await page.goto("/#/curso/sexto");
+  await expect(page.locator("#result-count")).toContainText("43 ejercicios disponibles");
 }
 test("Pistas progresivas, soluciones ocultas y controles de teclado", async ({ page }) => {
   await ready(page);
@@ -39,7 +39,7 @@ test("Filtros combinados, acentos y estado vacío sin perder foco", async ({ pag
   await expect(page.getByRole("status")).toContainText("0 ejercicios");
   await expect(page.getByRole("button", { name: "Imprimir ejercicios" })).toBeDisabled();
   await page.getByRole("button", { name: "Limpiar filtros" }).click();
-  await expect(page.locator(".exercise")).toHaveCount(33);
+  await expect(page.locator(".exercise")).toHaveCount(43);
 });
 test("Impresión independiente: incluye plegados y nunca pistas ni soluciones abiertas", async ({ page }) => {
   await ready(page);
@@ -77,7 +77,7 @@ test("Sin cuentas, trackers, persistencia ni peticiones a terceros", async ({ pa
   expect([...origins]).toEqual(["http://127.0.0.1:4173"]);
   expect(await page.context().cookies()).toEqual([]);
   expect(await page.evaluate(() => [localStorage.length, sessionStorage.length])).toEqual([0, 0]);
-  await expect(page.getByText("No es una web oficial", { exact: false })).toBeVisible();
+  await expect(page.locator("#course-screen .independence")).toBeVisible();
 });
 test("Error de contenido explícito y reintento real", async ({ page }) => {
   let fail = true;
@@ -85,23 +85,23 @@ test("Error de contenido explícito y reintento real", async ({ page }) => {
     if (fail) await route.fulfill({ status: 500, body: "error" });
     else await route.continue();
   });
-  await page.goto("/");
+  await page.goto("/#/curso/sexto");
   await expect(page.getByRole("alert")).toBeVisible();
   await expect(page.locator(".exercise")).toHaveCount(0);
   fail = false;
   await page.getByRole("button", { name: "Volver a intentar" }).click();
-  await expect(page.getByRole("status")).toContainText("33 ejercicios");
+  await expect(page.locator("#result-count")).toContainText("43 ejercicios");
   await expect(page.getByRole("alert")).toBeHidden();
 });
 test("JSON inválido no se presenta como resultado vacío", async ({ page }) => {
   await page.route("**/data/matematicas/calculo.json", (route) => route.fulfill({ json: { topic: "calculo", exercises: [] } }));
   await page.goto("/");
   await expect(page.getByRole("alert")).toBeVisible();
-  await expect(page.getByRole("status")).toContainText("no están disponibles");
+  await expect(page.locator("#catalog-status")).toContainText("no están disponibles");
 });
 test("Tema oscuro y zoom de contenido al 200 % mantienen legibilidad", async ({ page }) => {
-  await page.goto("/?scoutTheme=dark");
-  await expect(page.getByRole("status")).toContainText("33 ejercicios");
+  await page.goto("/?scoutTheme=dark#/curso/sexto");
+  await expect(page.locator("#result-count")).toContainText("43 ejercicios");
   await page.setViewportSize({ width: 1280, height: 900 });
   await page.evaluate(() => { document.documentElement.style.zoom = "2"; });
   await page.getByLabel("Tema", { exact: true }).selectOption("logica");
@@ -123,6 +123,56 @@ test("Tema oscuro y zoom de contenido al 200 % mantienen legibilidad", async ({ 
     expect((Math.max(a, b) + .05) / (Math.min(a, b) + .05)).toBeGreaterThanOrEqual(4.5);
   }
 });
+test("Portada por cursos y pantallas independientes con Atrás y enlaces directos", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("#catalog-status")).toContainText("2 cursos");
+    await page.screenshot({ path: test.info().outputPath("courses-home.png"), fullPage: true });
+    await expect(page.locator("#course-screen")).toBeHidden();
+    await expect(page.locator(".exercise")).toHaveCount(0);
+    const sixth = page.getByRole("link", { name: "Entrar en 6.º de Primaria" });
+    await sixth.focus();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/#\/curso\/sexto$/);
+    await expect(page.locator("#course-title")).toBeFocused();
+    await expect(page.locator("#course-title")).toHaveText("6.º de Primaria");
+    await expect(page.locator(".exercise")).toHaveCount(43);
+    await page.locator(".skip-link").focus();
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#main")).toBeFocused();
+    await expect(page).toHaveURL(/#\/curso\/sexto$/);
+    await page.getByLabel("¿Qué quieres practicar?").fill("sendero");
+    await expect(page.locator(".exercise")).toHaveCount(1);
+    await page.getByRole("link", { name: "Elegir otro curso" }).click();
+    await expect(page.locator("#print-view .print-exercise")).toHaveCount(0);
+    await page.getByRole("link", { name: "Entrar en 3.º de Primaria" }).click();
+    await expect(page.locator("#course-title")).toHaveText("3.º de Primaria");
+    await expect(page.locator(".exercise")).toHaveCount(20);
+    await expect(page.locator('[data-exercise="suma-resta"]')).toHaveCount(0);
+    await expect(page.getByLabel("¿Qué quieres practicar?")).toHaveValue("");
+    await page.reload();
+    await expect(page.locator("#result-count")).toContainText("20 ejercicios");
+    await page.goBack();
+    await expect(page.locator("#home-screen")).toBeVisible();
+    await page.goto("/#/curso/no-existe");
+    await expect(page.getByRole("alert")).toContainText("No encontramos ese curso");
+    await expect(page.locator(".exercise")).toHaveCount(0);
+  });
+  test("Tercero: filtros y hoja impresa no incluyen contenido de sexto ni respuestas", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto("/#/curso/tercero");
+    await expect(page.locator("#result-count")).toContainText("20 ejercicios");
+    await page.getByLabel("Tema", { exact: true }).selectOption("formas-datos-tercero");
+    await page.getByLabel("¿Qué quieres practicar?").fill("tabla");
+    await expect(page.locator(".exercise")).toHaveCount(1);
+    await page.getByRole("button", { name: "Ver solución:" }).click();
+    await page.screenshot({ path: test.info().outputPath("third-mobile.png"), fullPage: true });
+    await expect(page.locator("#print-view .print-exercise")).toHaveCount(1);
+    expect(await page.locator("#print-view").textContent()).not.toContain("Hay 20 votos");
+    await page.emulateMedia({ media: "print" });
+    await expect(page.locator("#print-view h1")).toContainText("3.º de Primaria");
+    await expect(page.locator("#print-view")).toContainText("Manzana");
+    expect(await page.locator("#print-view").textContent()).not.toContain("6.º");
+  });
 test("Decap carga configuración local sin autorizar ni guardar en GitHub", async ({ page }) => {
   const root = new URL("../editor/assets/", import.meta.url);
   const env = {

@@ -21,7 +21,7 @@ function list(value, label, max = 200) {
 
 export function validateCatalog(catalog) {
   object(catalog, "Catálogo");
-  check(catalog.version === 1, "Versión de catálogo no compatible");
+  check(catalog.version === 2, "Versión de catálogo no compatible");
   list(catalog.subjects, "Materias", 30);
   const ids = new Set();
   const topics = new Set();
@@ -43,6 +43,24 @@ export function validateCatalog(catalog) {
       check(topic.file === `/data/${subject.id}/${topic.id}.json`, `Ruta de tema inválida: ${topic.id}`);
     }
   }
+  list(catalog.courses, "Cursos", 12);
+  const courses = new Set();
+  const assigned = new Set();
+  for (const course of catalog.courses) {
+    object(course, "Curso");
+    slug(course.id, "Curso id");
+    check(!courses.has(course.id), `Curso duplicado: ${course.id}`);
+    courses.add(course.id);
+    text(course.title, "Título de curso", 120);
+    text(course.description, "Descripción de curso");
+    list(course.subjects, "Materias del curso", 30);
+    for (const id of course.subjects) {
+      check(ids.has(id), `Materia de curso inexistente: ${id}`);
+      check(!assigned.has(id), `Materia asignada a más de un curso: ${id}`);
+      assigned.add(id);
+    }
+  }
+  check(assigned.size === ids.size, "Hay materias sin curso");
   return catalog;
 }
 

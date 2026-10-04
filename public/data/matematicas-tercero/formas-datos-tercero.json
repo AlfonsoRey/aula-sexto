@@ -1,0 +1,49 @@
+{
+  "topic": "formas-datos-tercero",
+  "exercises": [
+    {
+      "id": "tercero-poligono", "title": "Un polígono de cinco lados", "difficulty": "inicial",
+      "statement": "Una figura cerrada está formada por cinco segmentos rectos que no se cruzan. ¿Cómo se llama este polígono y cuántos vértices tiene?",
+      "hints": ["Los polígonos se pueden clasificar por el número de lados.", "Un vértice es el punto donde se unen dos lados."],
+      "solution": "Es un pentágono y tiene 5 vértices.",
+      "steps": ["Un polígono de cinco lados se llama pentágono.", "Al recorrer sus cinco lados encontramos cinco vértices."],
+      "tags": ["geometría", "polígonos", "lados", "vértices"]
+    },
+    {
+      "id": "tercero-perimetro", "title": "Alrededor del rectángulo", "difficulty": "intermedio",
+      "statement": "Un rectángulo tiene dos lados de 7 cm y otros dos de 4 cm. ¿Cuánto mide todo su contorno?",
+      "hints": ["El contorno se llama perímetro.", "Suma los cuatro lados."],
+      "solution": "El perímetro es 22 cm.",
+      "steps": ["7 + 4 + 7 + 4 = 22.", "El contorno mide 22 cm; es una longitud, no una superficie."],
+      "tags": ["perímetro", "rectángulo", "centímetros"]
+    },
+    {
+      "id": "tercero-tabla", "title": "Votos para una merienda", "difficulty": "intermedio",
+      "statement": "En una votación inventada cada persona elige una fruta. Lee la tabla: ¿cuántos votos hay en total y qué fruta tiene más votos?",
+      "chart": {
+        "caption": "Fruta elegida para la merienda", "categoryLabel": "Fruta", "valueLabel": "Votos",
+        "values": [{ "label": "Manzana", "value": 8 }, { "label": "Pera", "value": 5 }, { "label": "Plátano", "value": 7 }]
+      },
+      "hints": ["Suma los votos de las tres frutas.", "Compara 8, 5 y 7 para encontrar el mayor."],
+      "solution": "Hay 20 votos en total. La manzana es la más votada, con 8.",
+      "steps": ["8 + 5 + 7 = 20 votos.", "8 es mayor que 5 y que 7.", "La manzana tiene 8 votos y es la más elegida."],
+      "tags": ["datos", "tabla", "gráfico", "recuento"]
+    },
+    {
+      "id": "tercero-patron", "title": "Saltos de cinco", "difficulty": "inicial",
+      "statement": "Una serie empieza en 15 y aumenta de 5 en 5: 15, 20, 25, 30… Escribe los dos números siguientes.",
+      "hints": ["Añade 5 al último número.", "Repite el mismo salto una vez más."],
+      "solution": "Los dos números siguientes son 35 y 40.",
+      "steps": ["30 + 5 = 35.", "35 + 5 = 40.", "La regla es siempre sumar 5."],
+      "tags": ["serie", "patrón", "suma"]
+    },
+    {
+      "id": "tercero-numero-misterio", "title": "El número de las pistas", "difficulty": "reto",
+      "statement": "Un número de dos cifras tiene 4 decenas. La suma de sus dos cifras es 10. ¿Cuál es el número?",
+      "hints": ["La cifra de las decenas es 4.", "¿Qué cifra sumada a 4 da 10?"],
+      "solution": "El número es 46.",
+      "steps": ["Tiene 4 decenas: empieza por 4.", "10 − 4 = 6, así que la cifra de las unidades es 6.", "El número es 46. Sus cifras suman 4 + 6 = 10."],
+      "tags": ["lógica", "cifras", "decenas", "deducción"]
+    }
+  ]
+}

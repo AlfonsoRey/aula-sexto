@@ -1,10 +1,14 @@
 {
-  "version": 1,
+  "version": 2,
+  "courses": [
+    { "id": "sexto", "title": "6.º de Primaria", "description": "Afianza lo que sabes y atrévete con nuevos retos de matemáticas y lógica.", "subjects": ["matematicas"] },
+    { "id": "tercero", "title": "3.º de Primaria", "description": "Descubre números, medidas, formas y problemas cotidianos, paso a paso.", "subjects": ["matematicas-tercero"] }
+  ],
   "subjects": [
     {
       "id": "matematicas",
       "title": "Matemáticas y lógica",
-      "description": "Números, formas y buenas preguntas. Ocho temas para practicar a tu ritmo con pistas y explicaciones.",
+      "description": "Números, formas y buenas preguntas. Nueve temas para practicar a tu ritmo con pistas y explicaciones.",
       "topics": [
         { "id": "calculo", "title": "Cálculo y divisibilidad", "description": "Opera con cuidado y encuentra conexiones entre los números.", "file": "/data/matematicas/calculo.json" },
         { "id": "fracciones", "title": "Fracciones", "description": "Comprende las partes, las equivalencias y las operaciones.", "file": "/data/matematicas/fracciones.json" },
@@ -13,7 +17,19 @@
         { "id": "medida", "title": "Medidas y unidades", "description": "Distancias, tiempo y superficies: elige la unidad adecuada.", "file": "/data/matematicas/medida.json" },
         { "id": "geometria", "title": "Geometría", "description": "Investiga perímetros, áreas, ángulos y volúmenes.", "file": "/data/matematicas/geometria.json" },
         { "id": "datos", "title": "Datos y probabilidad", "description": "Interpreta datos y razona sobre lo que puede ocurrir.", "file": "/data/matematicas/datos.json" },
-        { "id": "logica", "title": "Lógica y problemas", "description": "Busca patrones, ordena ideas y explica tus decisiones.", "file": "/data/matematicas/logica.json" }
+        { "id": "logica", "title": "Lógica y problemas", "description": "Busca patrones, ordena ideas y explica tus decisiones.", "file": "/data/matematicas/logica.json" },
+        { "id": "repaso-sexto", "title": "Más retos de sexto", "description": "Diez propuestas nuevas para conectar cálculo, medida y razonamiento.", "file": "/data/matematicas/repaso-sexto.json" }
+      ]
+    },
+    {
+      "id": "matematicas-tercero",
+      "title": "Matemáticas",
+      "description": "Ejercicios originales de apoyo para tercero: cálculo, problemas, medidas, geometría y lectura de datos.",
+      "topics": [
+        { "id": "numeros-tercero", "title": "Números y cálculo", "description": "Construye números y practica sumas, restas, multiplicaciones y repartos.", "file": "/data/matematicas-tercero/numeros-tercero.json" },
+        { "id": "problemas-tercero", "title": "Problemas y fracciones sencillas", "description": "Piensa qué operación necesitas y descubre partes iguales.", "file": "/data/matematicas-tercero/problemas-tercero.json" },
+        { "id": "medidas-tercero", "title": "Medidas, tiempo y dinero", "description": "Usa metros, gramos, litros, horas y euros en situaciones cercanas.", "file": "/data/matematicas-tercero/medidas-tercero.json" },
+        { "id": "formas-datos-tercero", "title": "Formas, datos y lógica", "description": "Explora figuras, interpreta tablas y descubre patrones.", "file": "/data/matematicas-tercero/formas-datos-tercero.json" }
       ]
     }
   ]

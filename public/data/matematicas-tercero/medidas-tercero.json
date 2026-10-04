@@ -1,0 +1,45 @@
+{
+  "topic": "medidas-tercero",
+  "exercises": [
+    {
+      "id": "tercero-centimetros", "title": "Una cinta en centímetros", "difficulty": "inicial",
+      "statement": "Una cinta mide 2 metros y 35 centímetros. ¿Cuántos centímetros mide en total?",
+      "hints": ["1 metro equivale a 100 centímetros.", "Convierte los metros y suma los centímetros restantes."],
+      "solution": "La cinta mide 235 cm.",
+      "steps": ["2 m = 200 cm.", "200 + 35 = 235 cm."],
+      "tags": ["longitud", "metros", "centímetros"]
+    },
+    {
+      "id": "tercero-peso", "title": "El peso de dos paquetes", "difficulty": "intermedio",
+      "statement": "Un paquete pesa 1 kilogramo y otro 250 gramos. ¿Cuántos gramos pesan juntos?",
+      "hints": ["1 kilogramo son 1 000 gramos.", "Suma cuando ambos pesos estén en gramos."],
+      "solution": "Juntos pesan 1 250 g.",
+      "steps": ["1 kg = 1 000 g.", "1 000 + 250 = 1 250 g."],
+      "tags": ["masa", "kilogramos", "gramos"]
+    },
+    {
+      "id": "tercero-litros", "title": "Jarras de agua", "difficulty": "inicial",
+      "statement": "Llenas tres jarras con 2 litros de agua en cada una. ¿Cuántos litros de agua hay?",
+      "hints": ["Las tres jarras contienen la misma cantidad.", "Puedes sumar 2 + 2 + 2 o multiplicar."],
+      "solution": "Hay 6 litros de agua.",
+      "steps": ["3 × 2 = 6.", "Entre las tres jarras hay 6 litros."],
+      "tags": ["capacidad", "litros", "multiplicación"]
+    },
+    {
+      "id": "tercero-reloj", "title": "Un rato de lectura", "difficulty": "intermedio",
+      "statement": "Empiezas a leer a las 16:20 y terminas a las 16:55 del mismo día. ¿Cuántos minutos has leído?",
+      "hints": ["No cambia la hora: compara los minutos.", "Resta 20 de 55."],
+      "solution": "Has leído durante 35 minutos.",
+      "steps": ["Las dos horas tienen las 16 como parte de las horas.", "55 − 20 = 35 minutos."],
+      "tags": ["reloj", "tiempo", "minutos"]
+    },
+    {
+      "id": "tercero-dinero", "title": "Una compra pequeña", "difficulty": "reto",
+      "statement": "Compras un cuaderno de 2 € y una goma de 75 céntimos. Pagas con 5 €. ¿Cuánto cuesta la compra y cuánto cambio recibes?",
+      "hints": ["Puedes hacer todas las cuentas en céntimos.", "1 euro equivale a 100 céntimos."],
+      "solution": "La compra cuesta 2,75 € y recibes 2,25 € de cambio.",
+      "steps": ["2 € = 200 céntimos; 200 + 75 = 275 céntimos.", "5 € = 500 céntimos.", "500 − 275 = 225 céntimos.", "225 céntimos son 2 euros y 25 céntimos: 2,25 €."],
+      "tags": ["euros", "céntimos", "dinero", "cambio"]
+    }
+  ]
+}
