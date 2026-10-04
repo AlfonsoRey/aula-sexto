@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Ejercicios originales de matemáticas y lógica para sexto de primaria, con pistas y explicaciones paso a paso.">
+  <meta name="description" content="Ejercicios originales de matemáticas para tercero y sexto de Primaria en la Comunidad de Madrid, con pistas y explicaciones paso a paso.">
   <title>Aula sexto · Aprende a tu ritmo</title>
   <script src="/assets/theme.js"></script>
   <link rel="stylesheet" href="/assets/styles.css">
@@ -16,11 +16,28 @@
       <a class="brand" href="/" aria-label="Aula sexto, inicio"><span class="brand-mark" aria-hidden="true">6</span> Aula sexto</a>
       <span class="header-note">Primaria · Comunidad de Madrid</span>
     </header>
-    <main id="main">
+    <main id="main" tabindex="-1">
+      <div id="home-screen">
       <section class="hero" aria-labelledby="welcome">
         <p class="eyebrow">Un poco de curiosidad, un paso cada vez</p>
         <h1 id="welcome">Las ideas grandes<br>empiezan practicando.</h1>
         <p>Explora, piensa y prueba. Si te atascas, tienes pistas; cuando termines, descubre el porqué de cada solución.</p>
+        <p class="independence">Proyecto educativo independiente. No es una web oficial del CEIPSO Príncipe Felipe.</p>
+      </section>
+      <section aria-labelledby="courses-title">
+        <h2 id="courses-title">Primero, elige tu curso</h2>
+        <p>Un aula para cada etapa. Dentro encontrarás materias y temas para practicar.</p>
+        <p id="catalog-status" role="status" aria-live="polite">Cargando cursos…</p>
+        <div id="courses" class="subjects"></div>
+      </section>
+      </div>
+      <div id="load-error" class="notice" role="alert" hidden><p id="error-message"></p><button id="retry" type="button">Volver a intentar</button></div>
+      <div id="course-screen" hidden>
+      <section class="hero course-heading" aria-labelledby="course-title">
+        <a href="#/" class="back-link">← Elegir otro curso</a>
+        <p class="eyebrow">Tu curso · Comunidad de Madrid</p>
+        <h1 id="course-title" tabindex="-1"></h1>
+        <p id="course-description"></p>
         <p class="independence">Proyecto educativo independiente. No es una web oficial del CEIPSO Príncipe Felipe.</p>
       </section>
       <section aria-labelledby="subjects-title">
@@ -39,9 +56,9 @@
           <button id="clear" type="button" class="secondary">Limpiar filtros</button>
         </form>
         <p id="result-count" role="status" aria-live="polite" aria-atomic="true">Cargando ejercicios…</p>
-        <div id="load-error" class="notice" role="alert" hidden><p id="error-message"></p><button id="retry" type="button">Volver a intentar</button></div>
         <div id="results"></div>
       </section>
+      </div>
       <section class="learning-note" aria-labelledby="method-title">
         <h2 id="method-title">No se trata solo de acertar.</h2>
         <p>Lee despacio, anota tus ideas y comprueba las unidades. Una pista es un empujón, no una carrera: intenta explicar tu razonamiento antes de abrir la solución.</p>
@@ -50,7 +67,7 @@
     <footer>
       <p><strong>Aula sexto</strong> · Recursos originales para aprender, sin cuentas de alumnado.</p>
       <p>No guardamos respuestas ni progreso, ni añadimos cookies o analíticas en esta web pública. El alojamiento puede conservar registros técnicos de acceso.</p>
-      <p>Material de apoyo para el tercer ciclo de Primaria. No sustituye la programación de tu centro. Referencia: <a href="https://www.bocm.es/eli/es-md/d/2022/07/13/61/con">Decreto 61/2022 de la Comunidad de Madrid</a>.</p>
+      <p>Material de apoyo para 3.º y 6.º de Primaria (segundo y tercer ciclo). No sustituye la programación de tu centro. Referencia: <a href="https://www.bocm.es/eli/es-md/d/2022/07/13/61/con">Decreto 61/2022 de la Comunidad de Madrid</a>.</p>
     </footer>
     <noscript><p class="notice">Activa JavaScript para cargar los ejercicios, filtrar y usar las pistas. No necesitas crear una cuenta.</p></noscript>
   </div>

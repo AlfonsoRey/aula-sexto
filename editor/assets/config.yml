@@ -19,14 +19,23 @@ media_library:
 show_preview_links: false
 collections:
   - name: catalogo
-    label: Catálogo de materias y temas
+    label: Catálogo de cursos, materias y temas
     publish: false
     files:
       - name: catalogo
         label: Catálogo
         file: public/data/catalog.json
         fields:
-          - { name: version, label: Versión del formato, widget: hidden, default: 1 }
+          - { name: version, label: Versión del formato, widget: hidden, default: 2 }
+          - name: courses
+            label: Cursos
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID de curso, widget: string, pattern: ['^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$', "Usa un ID estable sin tildes."] }
+              - { name: title, label: Nombre del curso, widget: string }
+              - { name: description, label: Descripción, widget: text }
+              - { name: subjects, label: IDs de materias del curso, widget: list, hint: "Cada materia debe existir y pertenecer a un único curso." }
           - name: subjects
             label: Materias
             widget: list
@@ -45,7 +54,7 @@ collections:
                   - { name: description, label: Descripción, widget: text }
                   - { name: file, label: Ruta JSON, widget: string, hint: "/data/ID_MATERIA/ID_TEMA.json; requiere añadir archivo y colección antes de publicar." }
   - name: matematicas
-    label: Matemáticas y lógica
+    label: 6.º · Matemáticas y lógica
     publish: false
     files:
       - name: calculo
@@ -128,4 +137,38 @@ collections:
         file: public/data/matematicas/logica.json
         fields:
           - { name: topic, label: Tema, widget: hidden, default: logica }
+          - *exercises
+      - name: repaso-sexto
+        label: Más retos de sexto
+        file: public/data/matematicas/repaso-sexto.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: repaso-sexto }
+          - *exercises
+  - name: matematicas-tercero
+    label: 3.º · Matemáticas
+    publish: false
+    files:
+      - name: numeros-tercero
+        label: Números y cálculo
+        file: public/data/matematicas-tercero/numeros-tercero.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: numeros-tercero }
+          - *exercises
+      - name: problemas-tercero
+        label: Problemas y fracciones sencillas
+        file: public/data/matematicas-tercero/problemas-tercero.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: problemas-tercero }
+          - *exercises
+      - name: medidas-tercero
+        label: Medidas, tiempo y dinero
+        file: public/data/matematicas-tercero/medidas-tercero.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: medidas-tercero }
+          - *exercises
+      - name: formas-datos-tercero
+        label: Formas, datos y lógica
+        file: public/data/matematicas-tercero/formas-datos-tercero.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: formas-datos-tercero }
           - *exercises

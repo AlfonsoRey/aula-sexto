@@ -1,0 +1,85 @@
+{
+  "topic": "repaso-sexto",
+  "exercises": [
+    {
+      "id": "sexto-prioridad", "title": "Cada operación a su turno", "difficulty": "intermedio",
+      "statement": "Calcula 18 + 6 × (14 − 9). Explica la prioridad de las operaciones.",
+      "hints": ["Empieza por el paréntesis.", "Multiplica antes de sumar."],
+      "solution": "El resultado es 48.",
+      "steps": ["14 − 9 = 5.", "6 × 5 = 30.", "18 + 30 = 48."],
+      "tags": ["operaciones combinadas", "paréntesis"]
+    },
+    {
+      "id": "sexto-primos", "title": "Divisores de 84", "difficulty": "reto",
+      "statement": "Descompón 84 en factores primos y usa la descomposición para hallar el máximo común divisor de 84 y 60.",
+      "hints": ["Divide entre números primos: 2, 3, 5, 7…", "Toma los factores comunes con el menor exponente."],
+      "solution": "84 = 2² × 3 × 7. El máximo común divisor de 84 y 60 es 12.",
+      "steps": ["84 = 2 × 42 = 2 × 2 × 21 = 2² × 3 × 7.", "60 = 2² × 3 × 5.", "Los factores comunes son 2² y 3: 4 × 3 = 12."],
+      "tags": ["primos", "divisores", "mcd"]
+    },
+    {
+      "id": "sexto-fraccion-restante", "title": "Las páginas pendientes", "difficulty": "intermedio",
+      "statement": "Has leído 5/8 de un libro de 160 páginas. ¿Cuántas páginas has leído y cuántas quedan?",
+      "hints": ["Calcula cuánto es un octavo de 160.", "Resta las páginas leídas del total."],
+      "solution": "Has leído 100 páginas y quedan 60.",
+      "steps": ["160 ÷ 8 = 20 páginas por octavo.", "20 × 5 = 100 páginas leídas.", "160 − 100 = 60 páginas pendientes."],
+      "tags": ["fracción de una cantidad", "libro", "resta"]
+    },
+    {
+      "id": "sexto-descuentos-sucesivos", "title": "Dos descuentos, uno después de otro", "difficulty": "reto",
+      "statement": "Una mochila de 80 € recibe primero un descuento del 20 %. Después se descuenta el 10 % del nuevo precio. ¿Cuánto cuesta al final? ¿Es lo mismo que descontar el 30 % del precio inicial?",
+      "hints": ["El segundo descuento se aplica al precio ya rebajado.", "Calcula el precio tras cada paso por separado."],
+      "solution": "Cuesta 57,60 €. No es igual al descuento directo del 30 %, que daría 56 €.",
+      "steps": ["20 % de 80 € = 16 €; quedan 64 €.", "10 % de 64 € = 6,40 €.", "64 − 6,40 = 57,60 €.", "Un 30 % de 80 € serían 24 €: 80 − 24 = 56 €. Las bases de los descuentos son distintas."],
+      "tags": ["porcentaje", "descuentos sucesivos", "dinero"]
+    },
+    {
+      "id": "sexto-escala", "title": "Una distancia en el plano", "difficulty": "reto",
+      "statement": "En un plano a escala 1:1 000, un sendero recto mide 6,5 cm. ¿Cuántos metros mide en la realidad?",
+      "hints": ["Cada centímetro del plano representa 1 000 cm reales.", "Convierte centímetros a metros al final."],
+      "solution": "El sendero mide 65 m en la realidad.",
+      "steps": ["6,5 × 1 000 = 6 500 cm reales.", "6 500 ÷ 100 = 65 m."],
+      "tags": ["escala", "proporción", "longitud"]
+    },
+    {
+      "id": "sexto-capacidad", "title": "Botellas para una merienda", "difficulty": "intermedio",
+      "statement": "Hay 4 botellas de 1,5 litros de agua. Se llenan vasos de 250 ml sin desperdiciar agua. ¿Cuántos vasos completos se pueden llenar?",
+      "hints": ["Calcula primero los litros totales.", "Expresa el agua total en mililitros."],
+      "solution": "Se pueden llenar 24 vasos completos.",
+      "steps": ["4 × 1,5 = 6 litros.", "6 litros = 6 000 ml.", "6 000 ÷ 250 = 24 vasos."],
+      "tags": ["capacidad", "litros", "mililitros", "división"]
+    },
+    {
+      "id": "sexto-area-compuesta", "title": "Dos rectángulos, un jardín", "difficulty": "reto",
+      "statement": "Un jardín está formado por dos rectángulos adyacentes, sin superposición: uno de 9 m × 4 m y otro de 3 m × 2 m. ¿Cuál es el área total?",
+      "hints": ["Calcula el área de cada rectángulo.", "Como no se superponen, puedes sumar las áreas."],
+      "solution": "El área total es 42 m².",
+      "steps": ["Primer rectángulo: 9 × 4 = 36 m².", "Segundo rectángulo: 3 × 2 = 6 m².", "36 + 6 = 42 m²."],
+      "tags": ["área", "figura compuesta", "rectángulos"]
+    },
+    {
+      "id": "sexto-moda", "title": "El valor más repetido", "difficulty": "inicial",
+      "statement": "En un ejemplo inventado, siete personas leen 3, 5, 4, 5, 6, 5 y 7 libros. ¿Cuál es la moda y cuántas veces aparece?",
+      "hints": ["La moda es el valor con mayor frecuencia.", "Cuenta las veces que aparece cada número."],
+      "solution": "La moda es 5 libros y aparece 3 veces.",
+      "steps": ["3, 4, 6 y 7 aparecen una vez cada uno.", "5 aparece tres veces.", "La mayor frecuencia es 3, así que la moda es 5 libros."],
+      "tags": ["estadística", "moda", "frecuencia"]
+    },
+    {
+      "id": "sexto-probabilidad-complemento", "title": "No sacar verde", "difficulty": "intermedio",
+      "statement": "Una bolsa tiene 4 fichas verdes, 3 azules y 5 rojas, iguales salvo el color. Mezclamos y sacamos una al azar, con todas igualmente posibles. ¿Cuál es la probabilidad de que no sea verde?",
+      "hints": ["Cuenta las fichas de todos los colores.", "Las fichas favorables son las azules y las rojas."],
+      "solution": "La probabilidad es 8/12 = 2/3.",
+      "steps": ["Hay 4 + 3 + 5 = 12 fichas.", "No verdes: 3 + 5 = 8.", "8/12 se simplifica entre 4: 2/3."],
+      "tags": ["probabilidad", "fracciones", "azar"]
+    },
+    {
+      "id": "sexto-tiempo-viaje", "title": "La hora de llegada", "difficulty": "inicial",
+      "statement": "Un autobús sale a las 09:45 y el trayecto dura 2 horas y 35 minutos, sin paradas adicionales. ¿A qué hora llega?",
+      "hints": ["Suma las dos horas primero.", "Recuerda que 60 minutos forman una hora."],
+      "solution": "Llega a las 12:20.",
+      "steps": ["09:45 + 2 horas = 11:45.", "Desde las 11:45, 15 minutos llevan a las 12:00.", "Quedan 20 de los 35 minutos: llegada a las 12:20."],
+      "tags": ["tiempo", "horas", "minutos", "reloj"]
+    }
+  ]
+}

@@ -10,9 +10,13 @@ const { catalog, exercises } = await readContent();
 const byId = Object.fromEntries(exercises.map((exercise) => [exercise.id, exercise]));
 const format = (value, decimals = 0) => new Intl.NumberFormat("es-ES", { minimumFractionDigits: decimals, maximumFractionDigits: 3, useGrouping: value >= 10000 }).format(value);
 
-test("33 ejercicios y 11 por nivel, cubiertos por colecciones protegidas", async () => {
-  assert.equal(exercises.length, 33);
-  for (const level of ["inicial", "intermedio", "reto"]) assert.equal(exercises.filter((exercise) => exercise.difficulty === level).length, 11);
+test("43 ejercicios de sexto y 20 de tercero, cubiertos por colecciones protegidas", async () => {
+  assert.equal(exercises.length, 63);
+  assert.equal(exercises.filter((exercise) => exercise.subject === "matematicas").length, 43);
+  assert.equal(exercises.filter((exercise) => exercise.topic === "repaso-sexto").length, 10);
+  assert.equal(exercises.filter((exercise) => exercise.subject === "matematicas-tercero").length, 20);
+  const initial = exercises.filter((exercise) => exercise.subject === "matematicas" && exercise.topic !== "repaso-sexto");
+  for (const level of ["inicial", "intermedio", "reto"]) assert.equal(initial.filter((exercise) => exercise.difficulty === level).length, 11);
   const config = parse(await readFile(new URL("../editor/assets/config.yml", import.meta.url), "utf8"));
   assert.equal(config.publish_mode, "editorial_workflow");
   assert.equal(config.backend.repo, "AlfonsoRey/aula-sexto");
@@ -54,7 +58,36 @@ const calculations = [
   ["cuadrado-inverso", (36 / 4) ** 2, 81],
   ["patas-animales", 8 * 2 + 3 * 4, 28],
   ["palillos-cuadrados", 4 + 5 * 3, 19],
-  ["redondeo-centesimas", Math.round(18746 / 10) / 100, 18.75]
+  ["redondeo-centesimas", Math.round(18746 / 10) / 100, 18.75],
+  ["sexto-prioridad", 18 + 6 * (14 - 9), 48],
+  ["sexto-primos", 2 ** 2 * 3 * 7, 84],
+  ["sexto-primos", 2 ** 2 * 3, 12],
+  ["sexto-fraccion-restante", 160 * 5 / 8, 100],
+  ["sexto-fraccion-restante", 160 - 100, 60],
+  ["sexto-descuentos-sucesivos", 8000 * .8 * .9 / 100, 57.6, 2],
+  ["sexto-descuentos-sucesivos", 80 * .7, 56],
+  ["sexto-escala", 6.5 * 1000 / 100, 65],
+  ["sexto-capacidad", 4 * 1.5 * 1000 / 250, 24],
+  ["sexto-area-compuesta", 9 * 4 + 3 * 2, 42],
+  ["tercero-valor-posicional", 4 * 1000 + 2 * 100 + 6 * 10 + 3, 4263],
+  ["tercero-suma", 248 + 175, 423],
+  ["tercero-resta", 602 - 278, 324],
+  ["tercero-multiplicacion", 24 * 6, 144],
+  ["tercero-division", 56 / 7, 8],
+  ["tercero-mitad", 18 / 2, 9],
+  ["tercero-autobuses", 3 * 28 - 76, 8],
+  ["tercero-bolsas", Math.floor(29 / 4), 7],
+  ["tercero-bolsas", 29 % 4, 1],
+  ["tercero-comparacion", 135 - 98, 37],
+  ["tercero-centimetros", 2 * 100 + 35, 235],
+  ["tercero-peso", 1000 + 250, 1250],
+  ["tercero-litros", 3 * 2, 6],
+  ["tercero-reloj", 55 - 20, 35],
+  ["tercero-dinero", (200 + 75) / 100, 2.75, 2],
+  ["tercero-dinero", (500 - 200 - 75) / 100, 2.25, 2],
+  ["tercero-perimetro", 7 + 4 + 7 + 4, 22],
+  ["tercero-patron", 30 + 5, 35],
+  ["tercero-patron", 30 + 5 + 5, 40]
 ];
 for (const [id, actual, expected, decimals] of calculations) {
   test(`Resultado vinculado al contenido ${id}: ${expected}`, () => {
@@ -88,6 +121,40 @@ test("Búsqueda con acentos, combinada, sin buscar soluciones", () => {
   const filters = { subject: "", topic: "geometria", difficulty: "intermedio", search: "triangulo area" };
   assert.deepEqual(exercises.filter((exercise) => matches(exercise, filters)).map((exercise) => exercise.id), ["triangulo-area"]);
   assert.equal(matches(byId["serie-doble"], { search: "129" }), false);
+});
+test("Referencias de cursos únicas, existentes y completas", () => {
+  assert.equal(catalog.version, 2);
+  assert.deepEqual(catalog.courses.map((course) => course.id), ["sexto", "tercero"]);
+  for (const change of [
+    (copy) => { copy.courses[1].id = "sexto"; },
+    (copy) => { copy.courses[0].subjects.push("no-existe"); },
+    (copy) => { copy.courses[1].subjects = ["matematicas"]; },
+    (copy) => { copy.courses.pop(); }
+  ]) {
+    const invalid = structuredClone(catalog);
+    change(invalid);
+    assert.throws(() => validateCatalog(invalid));
+  }
+});
+test("Resultados no numéricos y razonamientos nuevos", () => {
+  assert.ok(byId["tercero-cuartos"].solution.includes("1/4"));
+  assert.ok(byId["tercero-cuartos"].solution.includes("3/4"));
+  assert.ok(byId["tercero-poligono"].solution.includes("pentágono"));
+  assert.ok(byId["tercero-poligono"].solution.includes("5 vértices"));
+  assert.ok(byId["tercero-numero-misterio"].solution.includes(String(40 + (10 - 4))));
+  assert.ok(byId["sexto-probabilidad-complemento"].solution.includes("2/3"));
+  assert.equal((3 + 5) / (4 + 3 + 5), 2 / 3);
+  const votes = byId["tercero-tabla"].chart.values;
+  const total = votes.reduce((sum, item) => sum + item.value, 0);
+  assert.equal(total, 20);
+  assert.ok(byId["tercero-tabla"].solution.includes(String(total)));
+  assert.equal(votes.toSorted((a, b) => b.value - a.value)[0].label, "Manzana");
+  const readings = [3, 5, 4, 5, 6, 5, 7];
+  assert.equal(readings.filter((n) => n === 5).length, 3);
+  assert.ok(byId["sexto-moda"].solution.includes("5 libros"));
+  assert.ok(byId["sexto-moda"].solution.includes("3 veces"));
+  const arrival = 9 * 60 + 45 + 2 * 60 + 35;
+  assert.ok(byId["sexto-tiempo-viaje"].solution.includes(`${Math.floor(arrival / 60)}:${arrival % 60}`));
 });
 test("Rechazar rutas ajenas, duplicados, dificultad y contenido HTML", () => {
   const invalid = structuredClone(catalog);

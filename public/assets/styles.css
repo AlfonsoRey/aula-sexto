@@ -80,6 +80,10 @@ h3, h4 { line-height: 1.4; margin: 0; }
 .subject { padding: 24px; background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; }
 .subject-number { color: var(--cp-accent); font-size: .875rem; font-weight: 700; }
 .subject p { margin-block: 8px 16px; color: var(--cp-text-muted); }
+.course-link { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem 1rem; border-radius: .625rem; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 600; text-decoration: none; }
+.course-link:hover { background: var(--cp-accent-hover); }
+.back-link { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 24px; }
+.course-heading { padding-top: 24px; }
 .workspace { margin-block: 48px; }
 .section-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
 .section-heading h2 { margin-bottom: 0; }

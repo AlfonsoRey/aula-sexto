@@ -1,6 +1,8 @@
 # Aula sexto
 
-Web educativa independiente en español para sexto de Primaria, Comunidad de Madrid. **No es una web oficial del CEIPSO Príncipe Felipe** ni cuenta con su aval. Incluye 33 ejercicios originales de matemáticas y lógica: 21 aportados inicialmente y 12 nuevos, con pistas progresivas y explicaciones paso a paso.
+Web educativa independiente en español para tercero y sexto de Primaria, Comunidad de Madrid. **No es una web oficial del CEIPSO Príncipe Felipe** ni cuenta con su aval. Incluye 63 ejercicios originales con pistas progresivas y explicaciones paso a paso: 43 de sexto (los 33 anteriores y 10 nuevos) y 20 de tercero.
+
+La portada permite elegir curso antes de entrar en materias y temas. Cada curso tiene una pantalla independiente y un enlace directo: `/#/curso/sexto` y `/#/curso/tercero`. Se puede volver a la portada y usar Atrás/Adelante del navegador. No requiere reglas de redirección ni un build en Pages. Cambiar de curso limpia filtros, cajones abiertos y respuestas reveladas; los resultados y la impresión no mezclan cursos.
 
 ## Web pública sin build
 
@@ -46,7 +48,7 @@ El workflow `Validar aula / validar` comprueba contenido, lógica, autenticació
 
 ## Contenido y ampliación
 
-`public/data/catalog.json` enumera materias y temas. Cada tema apunta a `/data/ID_MATERIA/ID_TEMA.json`; contiene `topic` y una lista `exercises`. Cada ejercicio tiene:
+`public/data/catalog.json` (formato versión 2) enumera cursos, materias y temas. Cada curso tiene un `id`, `title`, `description` y una lista `subjects` con los IDs de sus materias. Cada materia debe pertenecer a exactamente un curso: sexto usa `matematicas` (se conservan todos los ejercicios y rutas anteriores) y tercero usa `matematicas-tercero`. Cada tema apunta a `/data/ID_MATERIA/ID_TEMA.json`; contiene `topic` y una lista `exercises`. Cada ejercicio tiene:
 
 | Campo | Uso |
 | --- | --- |
@@ -61,9 +63,11 @@ El workflow `Validar aula / validar` comprueba contenido, lógica, autenticació
 
 Contenido de texto, **sin HTML**. Se valida tanto localmente/CI como al cargar el sitio, y se renderiza con `textContent`. Si falla un archivo, la web muestra un error y permite reintentar; no sirve una lista parcial aparentando éxito.
 
-Para añadir ejercicios, editar el JSON del tema o su lista en Decap. Para añadir materias/temas, crear su JSON, actualizar el catálogo y añadir su colección de archivos en `editor/assets/config.yml`. Mantener las rutas sincronizadas, actualizar pruebas de recuento cuando cambie la colección inicial y ejecutar validación antes de publicar. Una materia no requiere modificar la lógica de la interfaz.
+Para añadir ejercicios, editar el JSON del tema o su lista en Decap. Para añadir cursos/materias/temas, crear sus archivos de contenido, actualizar el catálogo (incluida la asignación de materias a cursos) y añadir las colecciones de archivos correspondientes en `editor/assets/config.yml`. Mantener las rutas sincronizadas, actualizar pruebas de recuento cuando cambie la colección inicial y ejecutar validación antes de publicar. La navegación se genera del catálogo, sin modificar la lógica de la interfaz.
 
-Tres niveles con 11 ejercicios cada uno. No representan una calificación ni un diagnóstico. Las series finitas admiten distintas reglas: las soluciones proponen una coherente y piden justificarla.
+Tres niveles relativos a cada curso: inicial, intermedio y reto. Los 33 ejercicios originales de sexto mantienen sus niveles (11 por nivel), sin eliminar ni reescribir sus enunciados. Los 10 nuevos añaden operaciones combinadas, factores primos, páginas pendientes, descuentos sucesivos, escala, capacidad, áreas compuestas, moda, probabilidad y tiempo. No representan una calificación ni un diagnóstico. Las series finitas admiten distintas reglas: las soluciones proponen una coherente y piden justificarla.
+
+Los 20 ejercicios de tercero se organizan en cuatro temas: numeración y cálculo; problemas y fracciones sencillas; medidas, tiempo y dinero; formas, datos y lógica. Usan números de hasta cuatro cifras, multiplicación/división con números pequeños, medios y cuartos, equivalencias básicas, perímetros sencillos y lectura de tablas. No trasladan a tercero los descuentos, la media, las escalas, las operaciones con fracciones o los volúmenes de sexto.
 
 El filtro combina materia, tema, nivel y palabras; ignora mayúsculas y acentos y no busca dentro de las respuestas ocultas. Al recrear resultados, pistas y soluciones vuelven a cerrarse. La impresión usa una hoja independiente con los enunciados filtrados, incluso si los cajones están plegados, sin copiar pistas ni soluciones aunque estén abiertas.
 
@@ -98,6 +102,6 @@ Ante errores, el Worker devuelve mensajes explícitos y registra únicamente cat
 
 ## Referencia pedagógica y accesibilidad
 
-Material de apoyo original para el tercer ciclo, tomando como referencia el [Decreto 61/2022 de Madrid](https://www.bocm.es/eli/es-md/d/2022/07/13/61/con). No pretende cubrir todo el currículo ni sustituir la programación del centro.
+Material de apoyo original para tercero (segundo ciclo) y sexto (tercer ciclo), tomando como referencia el [Decreto 61/2022 de Madrid](https://www.bocm.es/eli/es-md/d/2022/07/13/61/con). Los contenidos del ciclo no se consideran exigibles íntegramente en tercero: la colección es una selección inicial de actividades sencillas y corresponde al centro concretar la progresión. No pretende cubrir todo el currículo ni sustituir la programación del centro.
 
 HTML semántico, foco visible, cajones nativos accesibles con teclado, controles etiquetados, resultados anunciados sin mover el foco, objetivos táctiles de 44 px y diseño desde 320 px. Tema claro/oscuro con fuentes locales, sin red externa. Objetivo WCAG 2.2 AA; las comprobaciones automáticas no equivalen a una certificación y conviene completar una revisión con lector de pantalla real antes de publicar.
