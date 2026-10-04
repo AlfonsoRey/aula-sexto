@@ -1,0 +1,131 @@
+backend:
+  name: github
+  repo: AlfonsoRey/aula-sexto
+  branch: main
+  base_url: "__EDITOR_ORIGIN__"
+  auth_endpoint: auth
+  squash_merges: true
+  commit_messages:
+    create: "Crear {{collection}} «{{slug}}»\n\nCo-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+    update: "Actualizar {{collection}} «{{slug}}»\n\nCo-authored-by: Copilot App <223556219+Copilot@users.noreply.github.com>"
+publish_mode: editorial_workflow
+locale: es
+site_url: "__PUBLIC_ORIGIN__"
+display_url: "__PUBLIC_ORIGIN__"
+media_folder: editor/media
+public_folder: /media
+media_library:
+  name: disabled
+show_preview_links: false
+collections:
+  - name: catalogo
+    label: Catálogo de materias y temas
+    publish: false
+    files:
+      - name: catalogo
+        label: Catálogo
+        file: public/data/catalog.json
+        fields:
+          - { name: version, label: Versión del formato, widget: hidden, default: 1 }
+          - name: subjects
+            label: Materias
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: id, label: ID de materia, widget: string, pattern: ['^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$', "Usa un ID estable sin tildes."] }
+              - { name: title, label: Título, widget: string }
+              - { name: description, label: Descripción, widget: text }
+              - name: topics
+                label: Temas (requieren archivo y colección)
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { name: id, label: ID de tema, widget: string }
+                  - { name: title, label: Título, widget: string }
+                  - { name: description, label: Descripción, widget: text }
+                  - { name: file, label: Ruta JSON, widget: string, hint: "/data/ID_MATERIA/ID_TEMA.json; requiere añadir archivo y colección antes de publicar." }
+  - name: matematicas
+    label: Matemáticas y lógica
+    publish: false
+    files:
+      - name: calculo
+        label: Cálculo y divisibilidad
+        file: public/data/matematicas/calculo.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: calculo }
+          - &exercises
+            name: exercises
+            label: Ejercicios
+            widget: list
+            summary: "{{fields.title}} · {{fields.difficulty}}"
+            fields:
+              - { name: id, label: ID único y estable, widget: string, pattern: ['^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$', "Usa minúsculas y guiones, sin tildes ni espacios."] }
+              - { name: title, label: Título, widget: string }
+              - { name: difficulty, label: Dificultad, widget: select, options: [inicial, intermedio, reto] }
+              - { name: statement, label: Enunciado, widget: text }
+              - name: hints
+                label: Pistas (de menor a mayor ayuda)
+                widget: list
+                field: { name: text, label: Pista, widget: text }
+              - { name: solution, label: Solución resumida (con unidades), widget: text }
+              - name: steps
+                label: Explicación paso a paso
+                widget: list
+                field: { name: text, label: Paso, widget: text }
+              - { name: tags, label: Etiquetas de búsqueda, widget: list }
+              - name: chart
+                label: Tabla y gráfico (opcional)
+                widget: object
+                required: false
+                fields:
+                  - { name: caption, label: Título del gráfico, widget: string }
+                  - { name: categoryLabel, label: Etiqueta de categorías, widget: string }
+                  - { name: valueLabel, label: Etiqueta de valores y unidades, widget: string }
+                  - name: values
+                    label: Datos
+                    widget: list
+                    fields:
+                      - { name: label, label: Etiqueta, widget: string }
+                      - { name: value, label: Valor, widget: number, value_type: float, min: 0, max: 1000000 }
+      - name: fracciones
+        label: Fracciones
+        file: public/data/matematicas/fracciones.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: fracciones }
+          - *exercises
+      - name: decimales
+        label: Números decimales
+        file: public/data/matematicas/decimales.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: decimales }
+          - *exercises
+      - name: proporcionalidad
+        label: Porcentajes y proporciones
+        file: public/data/matematicas/proporcionalidad.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: proporcionalidad }
+          - *exercises
+      - name: medida
+        label: Medidas y unidades
+        file: public/data/matematicas/medida.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: medida }
+          - *exercises
+      - name: geometria
+        label: Geometría
+        file: public/data/matematicas/geometria.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: geometria }
+          - *exercises
+      - name: datos
+        label: Datos y probabilidad
+        file: public/data/matematicas/datos.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: datos }
+          - *exercises
+      - name: logica
+        label: Lógica y problemas
+        file: public/data/matematicas/logica.json
+        fields:
+          - { name: topic, label: Tema, widget: hidden, default: logica }
+          - *exercises

@@ -1,0 +1,45 @@
+{
+  "topic": "calculo",
+  "exercises": [
+    {
+      "id": "suma-resta",
+      "title": "Una operación, dos pasos",
+      "difficulty": "inicial",
+      "statement": "Calcula 36 483 + 27 935 − 8 769. Explica en qué orden haces las operaciones.",
+      "hints": ["La suma y la resta tienen la misma prioridad: avanza de izquierda a derecha.", "Primero suma 36 483 y 27 935, alineando unidades con unidades."],
+      "solution": "36 483 + 27 935 − 8 769 = 55 649.",
+      "steps": ["36 483 + 27 935 = 64 418.", "64 418 − 8 769 = 55 649.", "Comprueba: 55 649 + 8 769 = 64 418."],
+      "tags": ["suma", "resta", "naturales"]
+    },
+    {
+      "id": "producto-descompuesto",
+      "title": "Multiplicar descomponiendo",
+      "difficulty": "intermedio",
+      "statement": "Calcula 246 × 38 descomponiendo el 38 en decenas y unidades.",
+      "hints": ["38 = 30 + 8.", "Calcula los dos productos y después súmalos."],
+      "solution": "246 × 38 = 9 348.",
+      "steps": ["246 × 30 = 7 380.", "246 × 8 = 1 968.", "7 380 + 1 968 = 9 348."],
+      "tags": ["multiplicación", "distributiva", "cálculo"]
+    },
+    {
+      "id": "division-exacta",
+      "title": "Un reparto exacto",
+      "difficulty": "intermedio",
+      "statement": "Calcula 7 560 ÷ 24 y comprueba el cociente con una multiplicación.",
+      "hints": ["24 × 300 = 7 200. ¿Cuánto queda?", "El resto después de repartir 300 por grupo es 360; 24 × 15 = 360."],
+      "solution": "7 560 ÷ 24 = 315; el resto es 0.",
+      "steps": ["7 560 − 7 200 = 360.", "360 ÷ 24 = 15.", "300 + 15 = 315.", "24 × 315 = 7 560: la división es exacta."],
+      "tags": ["división", "cociente", "comprobación"]
+    },
+    {
+      "id": "avisos-coincidentes",
+      "title": "¿Cuándo coinciden los avisos?",
+      "difficulty": "reto",
+      "statement": "Dos avisos suenan cada 12 y cada 18 minutos. Ahora han sonado a la vez. Si mantienen sus intervalos, ¿dentro de cuántos minutos volverán a coincidir por primera vez?",
+      "hints": ["Escribe los primeros múltiplos de 12 y los de 18.", "Busca el menor múltiplo positivo que aparezca en las dos listas."],
+      "solution": "Volverán a coincidir dentro de 36 minutos.",
+      "steps": ["Múltiplos positivos de 12: 12, 24, 36, 48…", "Múltiplos positivos de 18: 18, 36, 54…", "El primero común es 36: es el mínimo común múltiplo de 12 y 18."],
+      "tags": ["múltiplos", "divisibilidad", "mcm"]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "topic": "datos",
+  "exercises": [
+    {
+      "id": "notas-estadistica",
+      "title": "Dos maneras de resumir los datos",
+      "difficulty": "intermedio",
+      "statement": "Un ejemplo inventado contiene las notas 6, 8, 7, 9 y 10. Calcula su media y su mediana.",
+      "hints": ["Para la media, suma las notas y divide entre cuántas hay.", "Para la mediana, ordena los datos y busca el central."],
+      "solution": "La media es 8 y la mediana es 8.",
+      "steps": ["6 + 8 + 7 + 9 + 10 = 40.", "40 ÷ 5 = 8: esa es la media.", "Ordenamos: 6, 7, 8, 9, 10.", "El dato central, el tercero, es 8: esa es la mediana."],
+      "tags": ["media", "mediana", "estadística"]
+    },
+    {
+      "id": "prestamos-grafico",
+      "title": "La biblioteca en barras",
+      "difficulty": "reto",
+      "statement": "Observa la tabla y el gráfico de préstamos de una biblioteca inventada. ¿Cuántos préstamos hubo en total? ¿Qué día hubo más? Dibuja tu propio gráfico de barras con una escala de 3 préstamos por división y explica tu elección.",
+      "chart": {
+        "caption": "Préstamos de libros durante cuatro días",
+        "categoryLabel": "Día",
+        "valueLabel": "Préstamos",
+        "values": [
+          { "label": "Lunes", "value": 12 },
+          { "label": "Martes", "value": 18 },
+          { "label": "Miércoles", "value": 9 },
+          { "label": "Jueves", "value": 15 }
+        ]
+      },
+      "hints": ["El total requiere sumar todos los días, no elegir la barra más alta.", "Con escala de 3, las alturas serán 4, 6, 3 y 5 divisiones."],
+      "solution": "Hubo 54 préstamos. El martes tuvo el máximo: 18.",
+      "steps": ["12 + 18 + 9 + 15 = 54 préstamos.", "18 es el mayor valor y corresponde al martes.", "Dibuja barras de alturas 4, 6, 3 y 5 divisiones, con cada división igual a 3 préstamos.", "Pon títulos a los ejes y usa la misma escala para todas las barras."],
+      "tags": ["gráfico", "barras", "tabla", "datos"]
+    },
+    {
+      "id": "fichas-probabilidad",
+      "title": "Una ficha al azar",
+      "difficulty": "inicial",
+      "statement": "Una bolsa contiene 3 fichas azules y 5 rojas, iguales en todo salvo el color. Se mezclan y se saca una al azar sin mirar; todas tienen la misma posibilidad de salir. ¿Cuál es la probabilidad de que sea azul?",
+      "hints": ["Cuenta las fichas azules y el número total de fichas.", "La probabilidad es casos favorables divididos entre casos posibles."],
+      "solution": "La probabilidad de sacar una ficha azul es 3/8.",
+      "steps": ["Hay 3 + 5 = 8 fichas en total.", "3 de ellas son azules.", "Como todas son igualmente posibles, la probabilidad es 3/8."],
+      "tags": ["probabilidad", "azar", "fracción"]
+    }
+  ]
+}

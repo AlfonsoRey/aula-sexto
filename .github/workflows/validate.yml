@@ -1,0 +1,23 @@
+name: Validar aula
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: npm run validate && npm test
+      - run: npm run editor:prepare && npm run editor:check
+        env:
+          WRANGLER_SEND_METRICS: "false"
+      - run: npm run browser:install -- --with-deps
+      - run: npm run test:browser

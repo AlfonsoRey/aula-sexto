@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ejercicios originales de matemáticas y lógica para sexto de primaria, con pistas y explicaciones paso a paso.">
+  <title>Aula sexto · Aprende a tu ritmo</title>
+  <script src="/assets/theme.js"></script>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script type="module" src="/assets/app.js"></script>
+</head>
+<body>
+  <div id="screen-view">
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Aula sexto, inicio"><span class="brand-mark" aria-hidden="true">6</span> Aula sexto</a>
+      <span class="header-note">Primaria · Comunidad de Madrid</span>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="welcome">
+        <p class="eyebrow">Un poco de curiosidad, un paso cada vez</p>
+        <h1 id="welcome">Las ideas grandes<br>empiezan practicando.</h1>
+        <p>Explora, piensa y prueba. Si te atascas, tienes pistas; cuando termines, descubre el porqué de cada solución.</p>
+        <p class="independence">Proyecto educativo independiente. No es una web oficial del CEIPSO Príncipe Felipe.</p>
+      </section>
+      <section aria-labelledby="subjects-title">
+        <h2 id="subjects-title">Tu aula de hoy</h2>
+        <div id="subjects" class="subjects"></div>
+      </section>
+      <section class="workspace" aria-labelledby="practice-title" aria-busy="true">
+        <div class="section-heading">
+          <div><p class="eyebrow">Tú eliges el siguiente paso</p><h2 id="practice-title">Vamos a practicar</h2></div>
+          <button id="print" type="button" class="secondary" disabled>Imprimir ejercicios</button>
+        </div>
+        <form id="filters" class="filters" role="search" aria-label="Buscar y filtrar ejercicios">
+          <div class="search-field"><label for="search">¿Qué quieres practicar?</label><input id="search" type="search" maxlength="160" placeholder="Fracciones, triángulos, lógica…"></div>
+          <div><label for="topic">Tema</label><select id="topic"><option value="">Todos los temas</option></select></div>
+          <div><label for="difficulty">Dificultad</label><select id="difficulty"><option value="">Todos los niveles</option><option value="inicial">Inicial</option><option value="intermedio">Intermedio</option><option value="reto">Reto</option></select></div>
+          <button id="clear" type="button" class="secondary">Limpiar filtros</button>
+        </form>
+        <p id="result-count" role="status" aria-live="polite" aria-atomic="true">Cargando ejercicios…</p>
+        <div id="load-error" class="notice" role="alert" hidden><p id="error-message"></p><button id="retry" type="button">Volver a intentar</button></div>
+        <div id="results"></div>
+      </section>
+      <section class="learning-note" aria-labelledby="method-title">
+        <h2 id="method-title">No se trata solo de acertar.</h2>
+        <p>Lee despacio, anota tus ideas y comprueba las unidades. Una pista es un empujón, no una carrera: intenta explicar tu razonamiento antes de abrir la solución.</p>
+      </section>
+    </main>
+    <footer>
+      <p><strong>Aula sexto</strong> · Recursos originales para aprender, sin cuentas de alumnado.</p>
+      <p>No guardamos respuestas ni progreso, ni añadimos cookies o analíticas en esta web pública. El alojamiento puede conservar registros técnicos de acceso.</p>
+      <p>Material de apoyo para el tercer ciclo de Primaria. No sustituye la programación de tu centro. Referencia: <a href="https://www.bocm.es/eli/es-md/d/2022/07/13/61/con">Decreto 61/2022 de la Comunidad de Madrid</a>.</p>
+    </footer>
+    <noscript><p class="notice">Activa JavaScript para cargar los ejercicios, filtrar y usar las pistas. No necesitas crear una cuenta.</p></noscript>
+  </div>
+  <section id="print-view" aria-label="Hoja de ejercicios"></section>
+</body>
+</html>
