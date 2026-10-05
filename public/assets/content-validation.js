@@ -24,6 +24,20 @@ function sourceUrl(value, label) {
   check(url.protocol === "https:" && !url.username && !url.password && !url.port &&
     ["recursos.edu.xunta.gal", "www.edu.xunta.gal"].includes(url.hostname), `${label}: URL de fuente no permitida`);
 }
+function verifiedDate(value, label) {
+  check(typeof value === "string" && /^\d{4}-\d{2}-\d{2}$/.test(value) &&
+    Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value,
+  `${label}: fecha de comprobación inválida`);
+}
+function exerciseSource(source, id) {
+  object(source, `${id}: fuente`);
+  sourceUrl(source.url, `${id}: URL del original`);
+  sourceUrl(source.recordUrl, `${id}: URL de la ficha`);
+  for (const key of ["author", "title", "locator", "adaptation"]) text(source[key], `${id}: ${key}`);
+  check(source.license === "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+    `${id}: licencia de reproducción no verificada`);
+  verifiedDate(source.verifiedOn, id);
+}
 
 export function validateCatalog(catalog) {
   object(catalog, "Catálogo");
@@ -46,6 +60,7 @@ export function validateCatalog(catalog) {
       topics.add(topic.id);
       text(topic.title, "Título de tema", 120);
       text(topic.description, "Descripción de tema");
+      if (topic.requiresSource !== undefined) check(typeof topic.requiresSource === "boolean", `Fuente requerida inválida: ${topic.id}`);
       check(topic.file === `/data/${subject.id}/${topic.id}.json`, `Ruta de tema inválida: ${topic.id}`);
     }
   }
@@ -95,10 +110,7 @@ export function validateTopic(data, topic, seen = new Set()) {
     for (const key of ["publisher", "locator", "language", "published", "license", "notes"]) {
       text(resource.source[key], `${resource.id}: ${key}`);
     }
-    const date = resource.source.verifiedOn;
-    check(typeof date === "string" && /^\d{4}-\d{2}-\d{2}$/.test(date) &&
-      Number.isFinite(Date.parse(date)) && new Date(date).toISOString().slice(0, 10) === date,
-    `${resource.id}: fecha de comprobación inválida`);
+    verifiedDate(resource.source.verifiedOn, resource.id);
   }
   for (const exercise of data.exercises) {
     object(exercise, "Ejercicio");
@@ -109,6 +121,7 @@ export function validateTopic(data, topic, seen = new Set()) {
     check(Object.hasOwn(LEVELS, exercise.difficulty), `${exercise.id}: dificultad inválida`);
     text(exercise.statement, `${exercise.id}: enunciado`);
     text(exercise.solution, `${exercise.id}: solución`);
+    if (topic.requiresSource || exercise.source !== undefined) exerciseSource(exercise.source, exercise.id);
     for (const key of ["hints", "steps", "tags"]) {
       list(exercise[key], `${exercise.id}: ${key}`, key === "tags" ? 12 : 20);
       exercise[key].forEach((value) => text(value, `${exercise.id}: ${key}`, key === "tags" ? 80 : 3000));

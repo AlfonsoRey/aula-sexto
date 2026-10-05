@@ -36,6 +36,7 @@ collections:
               - { name: title, label: Nombre del curso, widget: string }
               - { name: region, label: Comunidad autónoma, widget: string }
               - { name: description, label: Descripción, widget: text }
+              - { name: requiresSource, label: Exigir fuente y licencia por ejercicio, widget: boolean, required: false, default: false }
               - { name: subjects, label: IDs de materias del curso, widget: list, hint: "Cada materia debe existir y pertenecer a un único curso." }
           - name: subjects
             label: Materias
@@ -83,6 +84,19 @@ collections:
                 widget: list
                 field: { name: text, label: Paso, widget: text }
               - { name: tags, label: Etiquetas de búsqueda, widget: list }
+              - name: source
+                label: Fuente de ejercicio adaptado (obligatoria en Bachillerato)
+                widget: object
+                required: false
+                fields:
+                  - { name: author, label: Autoría y atribución, widget: text }
+                  - { name: title, label: Título del recurso original, widget: string }
+                  - { name: url, label: URL HTTPS del documento o archivo original, widget: string }
+                  - { name: recordUrl, label: Ficha de procedencia y licencia, widget: string }
+                  - { name: locator, label: Archivo interno, página, sección y ejercicio, widget: text }
+                  - { name: license, label: Licencia, widget: select, options: ["CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia"] }
+                  - { name: adaptation, label: Traducción y cambios respecto al original, widget: text }
+                  - { name: verifiedOn, label: Fecha de revisión (AAAA-MM-DD), widget: string, pattern: ['^\d{4}-\d{2}-\d{2}$', "Formato AAAA-MM-DD."] }
               - name: chart
                 label: Tabla y gráfico (opcional)
                 widget: object
@@ -174,7 +188,7 @@ collections:
           - { name: topic, label: Tema, widget: hidden, default: formas-datos-tercero }
           - *exercises
   - name: bachillerato-fuentes
-    label: 1.º Bachillerato · Documentos originales de Galicia
+    label: 1.º Bachillerato · Ejercicios adaptados y fuentes de Galicia
     publish: false
     files:
       - name: algebra-trigonometria-bachillerato
@@ -182,7 +196,7 @@ collections:
         file: public/data/matematicas-bachillerato/algebra-trigonometria-bachillerato.json
         fields:
           - { name: topic, label: Tema, widget: hidden, default: algebra-trigonometria-bachillerato }
-          - { name: exercises, label: Ejercicios integrados, widget: hidden, default: [] }
+          - *exercises
           - &resources
             name: resources
             label: Documentos externos (no ejercicios integrados)
@@ -211,5 +225,5 @@ collections:
         file: public/data/fisica-bachillerato/cinematica-bachillerato.json
         fields:
           - { name: topic, label: Tema, widget: hidden, default: cinematica-bachillerato }
-          - { name: exercises, label: Ejercicios integrados, widget: hidden, default: [] }
+          - *exercises
           - *resources

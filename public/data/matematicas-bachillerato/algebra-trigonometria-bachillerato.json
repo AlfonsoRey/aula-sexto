@@ -1,6 +1,147 @@
 {
   "topic": "algebra-trigonometria-bachillerato",
-  "exercises": [],
+  "exercises": [
+    {
+      "id": "bach-algebra-valor-polinomio",
+      "title": "Valor numérico de un polinomio",
+      "difficulty": "inicial",
+      "statement": "Calcula el valor numérico de q(x) = 4x³ − 7x² + 5 para x = 2 y para x = −1.",
+      "hints": ["Sustituye x por cada valor, usando paréntesis si el número es negativo.", "Calcula primero las potencias, después los productos y por último la suma."],
+      "solution": "q(2) = 9; q(−1) = −6.",
+      "steps": ["Para x = 2: q(2) = 4·2³ − 7·2² + 5.", "Las potencias son 2³ = 8 y 2² = 4: q(2) = 32 − 28 + 5 = 9.", "Para x = −1: q(−1) = 4·(−1)³ − 7·(−1)² + 5.", "(−1)³ = −1 y (−1)² = 1: q(−1) = −4 − 7 + 5 = −6."],
+      "tags": ["álgebra", "polinomios", "valor numérico", "potencias"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 2; solución original en página 3",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del gallego al español, título, dificultad, pistas y pasos propios; solución recalculada. Se conservan expresión y valores.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-division-monomio",
+      "title": "División de un polinomio entre un monomio",
+      "difficulty": "inicial",
+      "statement": "Calcula (12x⁶ + 15x⁴ − 24x³) : (3x²). Indica para qué valores de x está definida esta división.",
+      "hints": ["Divide cada término del numerador entre 3x².", "Al dividir potencias de la misma base, resta los exponentes. El divisor no puede ser cero."],
+      "solution": "4x⁴ + 5x² − 8x, para x ≠ 0.",
+      "steps": ["La expresión original exige 3x² ≠ 0, por lo que x ≠ 0.", "12x⁶/(3x²) = 4x⁴.", "15x⁴/(3x²) = 5x².", "−24x³/(3x²) = −8x.", "Reúne los resultados: 4x⁴ + 5x² − 8x. La división original sigue sin estar definida en x = 0."],
+      "tags": ["álgebra", "polinomios", "división", "monomios", "dominio"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 4; solución original en página 3",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se conserva la división original y se añade explícitamente la pregunta sobre su dominio.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-combinacion-polinomios",
+      "title": "Combinar dos polinomios",
+      "difficulty": "intermedio",
+      "statement": "Dados p(x) = 4x⁴ + 3x³ − 8x² + 10x − 5 y q(x) = 2x³ + 3x² − 6x − 9, calcula 2p(x) − 3q(x).",
+      "hints": ["Multiplica todos los términos de p(x) por 2 y todos los de q(x) por −3.", "Agrupa términos de igual grado y comprueba los signos de los términos negativos de q(x)."],
+      "solution": "2p(x) − 3q(x) = 8x⁴ − 25x² + 38x + 17.",
+      "steps": ["2p(x) = 8x⁴ + 6x³ − 16x² + 20x − 10.", "−3q(x) = −6x³ − 9x² + 18x + 27.", "Suma ambos resultados: los términos 6x³ y −6x³ se anulan.", "Los restantes son 8x⁴, −25x², 38x y 17."],
+      "tags": ["álgebra", "polinomios", "suma", "distributiva"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 6; solución original en página 4",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del gallego al español, título, dificultad, pistas y pasos propios; solución recalculada. Se conservan polinomios y operación.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-factor-comun",
+      "title": "Extraer el factor común",
+      "difficulty": "inicial",
+      "statement": "Saca factor común en 6x⁴ − 4x³ + 8x².",
+      "hints": ["Busca el máximo común divisor de los coeficientes 6, 4 y 8.", "Todos los términos contienen x². Divide cada término por el factor común elegido."],
+      "solution": "6x⁴ − 4x³ + 8x² = 2x²(3x² − 2x + 4).",
+      "steps": ["El máximo común divisor de 6, 4 y 8 es 2.", "La menor potencia común de x es x²: el factor común es 2x².", "Al dividir los términos por 2x² quedan 3x², −2x y 4.", "Por tanto, 6x⁴ − 4x³ + 8x² = 2x²(3x² − 2x + 4). Comprueba desarrollando el producto."],
+      "tags": ["álgebra", "factorización", "factor común", "polinomios"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 8, apartado a; solución original en página 4",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del apartado a, título, dificultad, pistas y pasos propios; solución recalculada. No se incluye el apartado b del original.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-producto-polinomios",
+      "title": "Multiplicar polinomios",
+      "difficulty": "intermedio",
+      "statement": "Calcula (x² + 5x + 2)(x + 3).",
+      "hints": ["Multiplica cada término del primer paréntesis por x y después por 3.", "Agrupa los términos del mismo grado."],
+      "solution": "(x² + 5x + 2)(x + 3) = x³ + 8x² + 17x + 6.",
+      "steps": ["El producto por x es x³ + 5x² + 2x.", "El producto por 3 es 3x² + 15x + 6.", "Suma los dos: x³ + (5 + 3)x² + (2 + 15)x + 6.", "El resultado es x³ + 8x² + 17x + 6."],
+      "tags": ["álgebra", "polinomios", "producto", "distributiva"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 9, apartado a; solución original en página 4",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del apartado a, título, dificultad, pistas y pasos propios; solución recalculada. No se incluye el apartado b del original.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-identidades",
+      "title": "Identidades notables",
+      "difficulty": "intermedio",
+      "statement": "Calcula: a) (2x + 3)²; b) (3x − 2)²; c) (3x + 2)(3x − 2).",
+      "hints": ["El cuadrado de una suma o diferencia incluye el doble producto de sus dos términos.", "Para el apartado c, usa (a + b)(a − b) = a² − b²."],
+      "solution": "a) 4x² + 12x + 9; b) 9x² − 12x + 4; c) 9x² − 4.",
+      "steps": ["a) (2x + 3)² = (2x)² + 2·(2x)·3 + 3² = 4x² + 12x + 9.", "b) (3x − 2)² = (3x)² − 2·(3x)·2 + 2² = 9x² − 12x + 4.", "c) (3x + 2)(3x − 2) = (3x)² − 2² = 9x² − 4.", "Puedes comprobar cada identidad multiplicando los paréntesis término a término."],
+      "tags": ["álgebra", "identidades notables", "cuadrado", "diferencia de cuadrados"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 1, ejercicio 10, apartados a, b y c; solución original en página 5",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del gallego al español, título, dificultad, pistas y pasos propios; solución recalculada. Se conservan los tres apartados.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-algebra-raices",
+      "title": "Raíces de un polinomio de tercer grado",
+      "difficulty": "reto",
+      "statement": "¿Cuántas raíces puede tener p(x) = x³ + 2x² − 5x − 6? Calcula las que puedas.",
+      "hints": ["Un polinomio no nulo de grado 3 tiene como máximo tres raíces distintas. Prueba divisores enteros de −6.", "Si encuentras una raíz r, puedes dividir entre x − r y continuar con el polinomio de segundo grado."],
+      "solution": "Como máximo tres raíces distintas. En este caso son x = −3, x = −1 y x = 2: p(x) = (x + 3)(x + 1)(x − 2).",
+      "steps": ["El grado es 3, así que no puede tener más de tres raíces distintas.", "Prueba x = 2: p(2) = 8 + 8 − 10 − 6 = 0. Por tanto, x − 2 es un factor.", "Dividiendo entre x − 2 se obtiene x² + 4x + 3.", "x² + 4x + 3 = (x + 1)(x + 3).", "Los tres factores se anulan para x = 2, x = −1 y x = −3. Son tres raíces reales distintas."],
+      "tags": ["álgebra", "polinomios", "raíces", "Ruffini", "factorización"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · material elaborado por el IES San Clemente, según la ficha de la Xunta",
+        "title": "Matemáticas - 1º de Bacharelato · Unidade 03",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372329905/matematicas/contido_files/1bach_matematicas.zip",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato",
+        "locator": "course_files/unidade03/arquivos/actividades.pdf · página 2, ejercicio 20; solución original en página 7",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción del gallego al español, título, dificultad, pistas y pasos propios; solución recalculada. La explicación precisa que el límite de tres se refiere a raíces distintas.",
+        "verifiedOn": "2026-10-04"
+      }
+    }
+  ],
   "resources": [
     {
       "id": "bach-matematicas-cuaderno-refuerzo",

@@ -10,8 +10,8 @@ const { catalog, exercises, resources } = await readContent();
 const byId = Object.fromEntries(exercises.map((exercise) => [exercise.id, exercise]));
 const format = (value, decimals = 0) => new Intl.NumberFormat("es-ES", { minimumFractionDigits: decimals, maximumFractionDigits: 3, useGrouping: value >= 10000 }).format(value);
 
-test("43 ejercicios de sexto y 20 de tercero, cubiertos por colecciones protegidas", async () => {
-  assert.equal(exercises.length, 63);
+test("63 ejercicios de Primaria y 14 de Bachillerato, cubiertos por colecciones protegidas", async () => {
+  assert.equal(exercises.length, 77);
   assert.equal(exercises.filter((exercise) => exercise.subject === "matematicas").length, 43);
   assert.equal(exercises.filter((exercise) => exercise.topic === "repaso-sexto").length, 10);
   assert.equal(exercises.filter((exercise) => exercise.subject === "matematicas-tercero").length, 20);
@@ -172,11 +172,22 @@ test("Rechazar rutas ajenas, duplicados, dificultad y contenido HTML", () => {
   assert.throws(() => validateTopic(data, topic), /duplicado/);
 });
 
-test("Bachillerato enlaza fuentes, no inventa ejercicios, con región y procedencia", () => {
+test("Bachillerato adapta 14 ejercicios con fuentes y conserva los tres documentos", () => {
   const course = catalog.courses.find((item) => item.id === "bachillerato-galicia");
   assert.equal(course.region, "Galicia");
   assert.deepEqual(course.subjects, ["matematicas-bachillerato", "fisica-bachillerato"]);
-  assert.equal(exercises.filter((item) => course.subjects.includes(item.subject)).length, 0);
+  const adapted = exercises.filter((item) => course.subjects.includes(item.subject));
+  assert.equal(adapted.length, 14);
+  assert.equal(adapted.filter((item) => item.subject === "matematicas-bachillerato").length, 7);
+  assert.equal(adapted.filter((item) => item.subject === "fisica-bachillerato").length, 7);
+  for (const item of adapted) {
+    assert.ok(item.source.author.includes("Consellería"));
+    assert.ok(item.source.locator.includes("página"));
+    assert.ok(item.source.adaptation.includes("Aula sexto"));
+    assert.ok(item.source.adaptation.includes("solución recalculada"));
+    assert.ok(item.source.license.startsWith("CC BY-NC-SA"));
+    assert.equal(item.source.verifiedOn, "2026-10-04");
+  }
   assert.equal(resources.length, 3);
   assert.equal(resources.filter((item) => item.subject === "matematicas-bachillerato").length, 1);
   assert.equal(resources.filter((item) => item.subject === "fisica-bachillerato").length, 2);
@@ -191,6 +202,81 @@ test("Bachillerato enlaza fuentes, no inventa ejercicios, con región y proceden
   }
   assert.equal(matches(resources[0], { search: "TRIÁNGULOS" }), true);
   assert.equal(matches(resources[0], { difficulty: "inicial" }), false);
+});
+
+test("Resultados de álgebra vinculados a los enunciados extraídos", () => {
+  const value = byId["bach-algebra-valor-polinomio"];
+  assert.equal(value.statement, "Calcula el valor numérico de q(x) = 4x³ − 7x² + 5 para x = 2 y para x = −1.");
+  const q = (x) => 4 * x ** 3 - 7 * x ** 2 + 5;
+  assert.equal(value.solution, `q(2) = ${q(2)}; q(−1) = ${String(q(-1)).replace("-", "−")}.`);
+  for (const x of [-3, -1, .5, 2, 4]) {
+    const p = 4 * x ** 4 + 3 * x ** 3 - 8 * x ** 2 + 10 * x - 5;
+    const q = 2 * x ** 3 + 3 * x ** 2 - 6 * x - 9;
+    assert.ok(Math.abs((2 * p - 3 * q) - (8 * x ** 4 - 25 * x ** 2 + 38 * x + 17)) < 1e-9);
+    assert.ok(Math.abs((6 * x ** 4 - 4 * x ** 3 + 8 * x ** 2) - 2 * x ** 2 * (3 * x ** 2 - 2 * x + 4)) < 1e-9);
+    assert.ok(Math.abs((x ** 2 + 5 * x + 2) * (x + 3) - (x ** 3 + 8 * x ** 2 + 17 * x + 6)) < 1e-9);
+    assert.ok(Math.abs((12 * x ** 6 + 15 * x ** 4 - 24 * x ** 3) / (3 * x ** 2) - (4 * x ** 4 + 5 * x ** 2 - 8 * x)) < 1e-9);
+    assert.equal((2 * x + 3) ** 2, 4 * x ** 2 + 12 * x + 9);
+    assert.equal((3 * x - 2) ** 2, 9 * x ** 2 - 12 * x + 4);
+    assert.equal((3 * x + 2) * (3 * x - 2), 9 * x ** 2 - 4);
+    assert.ok(Math.abs((x ** 3 + 2 * x ** 2 - 5 * x - 6) - (x + 3) * (x + 1) * (x - 2)) < 1e-9);
+  }
+  for (const root of [-3, -1, 2]) assert.equal(root ** 3 + 2 * root ** 2 - 5 * root - 6, 0);
+  const expected = {
+    "bach-algebra-division-monomio": "4x⁴ + 5x² − 8x, para x ≠ 0.",
+    "bach-algebra-combinacion-polinomios": "2p(x) − 3q(x) = 8x⁴ − 25x² + 38x + 17.",
+    "bach-algebra-factor-comun": "6x⁴ − 4x³ + 8x² = 2x²(3x² − 2x + 4).",
+    "bach-algebra-producto-polinomios": "(x² + 5x + 2)(x + 3) = x³ + 8x² + 17x + 6.",
+    "bach-algebra-identidades": "a) 4x² + 12x + 9; b) 9x² − 12x + 4; c) 9x² − 4.",
+    "bach-algebra-raices": "Como máximo tres raíces distintas. En este caso son x = −3, x = −1 y x = 2: p(x) = (x + 3)(x + 1)(x − 2)."
+  };
+  for (const [id, result] of Object.entries(expected)) assert.equal(byId[id].solution, result);
+});
+
+test("Física: vectores, SI, signos y precisión vinculados a las soluciones", () => {
+  const fixed = (value, digits) => new Intl.NumberFormat("es-ES", { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
+  const velocity = [(4 - 7) / 3, (4 - (-2)) / 3];
+  assert.deepEqual(velocity, [-1, 2]);
+  assert.ok(byId["bach-fisica-velocidad-media"].statement.includes("r₁ = 7i − 2j"));
+  assert.equal(byId["bach-fisica-velocidad-media"].solution, `v̄ = −i + 2j m/s; |v̄| = √5 m/s ≈ ${fixed(Math.hypot(...velocity), 2)} m/s.`);
+  const acceleration = [(18 - 6) / 3, (-6 - (-3)) / 3];
+  assert.deepEqual(acceleration, [4, -1]);
+  assert.deepEqual([6 + 7 * acceleration[0], -3 + 7 * acceleration[1]], [34, -10]);
+  assert.equal(byId["bach-fisica-aceleracion-vector"].solution,
+    `ā = 4i − j m/s²; |ā| = √17 m/s² ≈ ${fixed(Math.hypot(...acceleration), 2)} m/s². v(7 s) = 34i − 10j m/s.`);
+  const angular = 400 * 2 * Math.PI / 60;
+  const radial = angular ** 2 * .06;
+  assert.equal(byId["bach-fisica-aceleracion-cd"].solution,
+    `aₙ = (32π²/3) m/s² ≈ ${fixed(radial, 2)} m/s², dirigida hacia el centro.`);
+  assert.equal(byId["bach-fisica-ecuaciones-mru"].solution,
+    "x(t) = 15 + 3t (x en m y t en s); v(t) = 3 m/s; a(t) = 0 m/s².");
+  assert.equal(byId["bach-fisica-llegada-origen"].solution,
+    `t = 100/2,3 s = 1000/23 s ≈ ${fixed(100 / 2.3, 2)} s.`);
+  assert.ok(byId["bach-fisica-interpretar-posicion"].solution.includes(`${fixed(12 / 5, 1)} s`));
+  assert.ok(byId["bach-fisica-interpretar-posicion"].solution.includes("s₀ = −12 m, v = 5 m/s y a = 0"));
+  const omega = 1.5 * 2 * Math.PI / 60;
+  assert.equal(byId["bach-fisica-noria"].solution,
+    `ω = π/20 rad/s ≈ ${fixed(omega, 4)} rad/s; v = π/2 m/s ≈ ${fixed(omega * 10, 2)} m/s; Δθ = 2π rad (una vuelta).`);
+  assert.ok(Math.abs(omega * 40 - 2 * Math.PI) < 1e-12);
+});
+
+test("Las fuentes se exigen en Bachillerato y rechazan licencias, enlaces o metadatos inválidos", () => {
+  const topic = catalog.subjects.find((item) => item.id === "fisica-bachillerato").topics[0];
+  assert.equal(topic.requiresSource, true);
+  const valid = { topic: topic.id, exercises: [structuredClone(byId["bach-fisica-noria"])] };
+  for (const change of [
+    (copy) => { delete copy.exercises[0].source; },
+    (copy) => { copy.exercises[0].source.license = "Permiso desconocido"; },
+    (copy) => { copy.exercises[0].source.url = "javascript:alert(1)"; },
+    (copy) => { copy.exercises[0].source.recordUrl = "https://evil.example"; },
+    (copy) => { copy.exercises[0].source.author = "<b>Autor</b>"; },
+    (copy) => { copy.exercises[0].source.verifiedOn = "2026-02-30"; },
+    (copy) => { copy.exercises[0].source.locator = ""; }
+  ]) {
+    const invalid = structuredClone(valid);
+    change(invalid);
+    assert.throws(() => validateTopic(invalid, topic));
+  }
 });
 test("Documentos externos rechazan URL insegura, fecha inválida, HTML y respuestas", () => {
   const topic = catalog.subjects.find((item) => item.id === "matematicas-bachillerato").topics[0];
