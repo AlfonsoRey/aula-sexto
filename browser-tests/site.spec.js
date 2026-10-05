@@ -181,12 +181,12 @@ test("Bachillerato: fuentes verificables, materias aisladas y sin respuestas inv
   await expect(page.locator("#course-title")).toHaveText("1.º de Bachillerato");
   await expect(page.locator("#course-region")).toHaveText("Tu curso · Galicia");
   await expect(page.locator("#header-note")).toContainText("Galicia");
-  await expect(page.locator("#result-count")).toContainText("0 ejercicios disponibles. 1 documento externo");
-  await expect(page.locator("[data-exercise]")).toHaveCount(0);
+  await expect(page.locator("#result-count")).toContainText("7 ejercicios disponibles. 1 documento externo");
+  await expect(page.locator("[data-exercise]")).toHaveCount(7);
   await expect(page.locator("[data-resource]")).toHaveCount(1);
-  await expect(page.getByLabel("Dificultad", { exact: true })).toBeDisabled();
-  await expect(page.getByRole("button", { name: "Imprimir ejercicios" })).toBeDisabled();
-  await expect(page.locator("#print-view")).toBeEmpty();
+  await expect(page.getByLabel("Dificultad", { exact: true })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Imprimir ejercicios" })).toBeEnabled();
+  await expect(page.locator("#print-view .print-exercise")).toHaveCount(7);
   await expect(page.locator("#resource-note")).toContainText("no todo el temario ni exámenes oficiales");
   await page.getByLabel("¿Qué quieres practicar?").fill("triángulos");
   const maths = page.locator('[data-resource="bach-matematicas-cuaderno-refuerzo"]');
@@ -197,6 +197,7 @@ test("Bachillerato: fuentes verificables, materias aisladas y sin respuestas inv
   await expect(link).toHaveAttribute("rel", "noopener noreferrer");
   await expect(maths.getByRole("button")).toHaveCount(0);
   await page.locator('button[data-subject="fisica-bachillerato"]').click();
+  await expect(page.locator("[data-exercise]")).toHaveCount(7);
   await expect(page.locator("[data-resource]")).toHaveCount(2);
   await expect(page.locator("#result-count")).toContainText("2 documentos externos");
   await expect(page.getByLabel("¿Qué quieres practicar?")).toHaveValue("");
@@ -218,6 +219,51 @@ test("Bachillerato: fuentes verificables, materias aisladas y sin respuestas inv
   await expect(page.locator("[data-resource]")).toHaveCount(0);
   await expect(page.locator("[data-exercise]")).toHaveCount(43);
   await expect(page.locator("#print-view .print-exercise")).toHaveCount(43);
+});
+
+test("Ejercicios extraídos: pistas, solución e impresión sin respuestas pero con atribución", async ({ page }) => {
+  await page.goto("/#/curso/bachillerato-galicia");
+  await expect(page.locator("#result-count")).toContainText("7 ejercicios");
+  await page.getByLabel("Dificultad", { exact: true }).selectOption("reto");
+  const algebra = page.locator('[data-exercise="bach-algebra-raices"]');
+  await expect(page.locator("[data-exercise]")).toHaveCount(1);
+  await expect(page.locator("[data-resource]")).toHaveCount(0);
+  await expect(algebra).toContainText("página 2, ejercicio 20");
+  await expect(algebra).toContainText("CC BY-NC-SA");
+  await expect(page.locator(".revealed:visible")).toHaveCount(0);
+  const hint = algebra.getByRole("button", { name: "Ver pista:" });
+  await hint.focus();
+  await page.keyboard.press("Enter");
+  await expect(algebra.locator("ol").first().locator("li")).toHaveCount(1);
+  await algebra.getByRole("button", { name: "Ver solución:" }).click();
+  await expect(algebra.locator("#bach-algebra-raices-solution")).toContainText("x = −3");
+  await page.locator('button[data-subject="fisica-bachillerato"]').click();
+  await expect(page.getByLabel("Dificultad", { exact: true })).toHaveValue("");
+  await page.getByLabel("¿Qué quieres practicar?").fill("grabadora");
+  const physics = page.locator('[data-exercise="bach-fisica-aceleracion-cd"]');
+  await expect(page.locator("[data-exercise]")).toHaveCount(1);
+  await expect(page.locator("[data-resource]")).toHaveCount(0);
+  await expect(physics.locator(".source-attribution")).toContainText("página 1, sección 1, ejemplo 3");
+  await expect(physics).toContainText("12 cm");
+  await expect(physics.locator("#bach-fisica-aceleracion-cd-solution")).toBeHidden();
+  await expect(physics).not.toContainText("105,28", { useInnerText: true });
+  await physics.getByRole("button", { name: "Ver solución:" }).click();
+  await expect(physics.locator("#bach-fisica-aceleracion-cd-solution")).toContainText("105,28 m/s²");
+  const print = page.locator("#print-view");
+  await expect(print.locator(".print-exercise")).toHaveCount(1);
+  const text = await print.textContent();
+  expect(text).toContain("400 rpm");
+  expect(text).toContain("CC BY-NC-SA");
+  expect(text).toContain("Consellería");
+  expect(text).toContain("página 1, sección 1, ejemplo 3");
+  expect(text).not.toContain("105,28");
+  expect(text).not.toContain("32π²/3");
+  expect(text).not.toContain("El radio es r");
+  expect(text).not.toContain("Una vuelta equivale");
+  await page.emulateMedia({ media: "print" });
+  await expect(print).toBeVisible();
+  await expect(page.locator("#screen-view")).toBeHidden();
+  expect((await page.pdf({ format: "A4" })).length).toBeGreaterThan(1000);
 });
 
 test("Fuente externa inválida provoca error explícito y no catálogo parcial", async ({ page }) => {

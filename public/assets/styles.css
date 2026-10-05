@@ -102,6 +102,7 @@ input, select { display: block; width: 100%; min-width: 0; padding: .65rem .75re
 .exercise-header { display: flex; align-items: start; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 .level { border: 1px solid var(--cp-border-strong); border-radius: .625rem; padding: 2px 8px; color: var(--cp-text-muted); font-size: .75rem; font-weight: 650; }
 .exercise p { white-space: pre-line; }
+.source-attribution { font-size: .875rem; overflow-wrap: anywhere; }
 .exercise-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
 .revealed { border-left: 3px solid var(--cp-accent); padding: 12px 16px; margin-top: 16px; background: var(--cp-accent-soft); }
 .revealed > :first-child { margin-top: 0; }

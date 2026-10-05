@@ -2,7 +2,7 @@
 
 Web educativa independiente en español para tercero y sexto de Primaria, Comunidad de Madrid. **No es una web oficial del CEIPSO Príncipe Felipe** ni cuenta con su aval. Incluye 63 ejercicios originales con pistas progresivas y explicaciones paso a paso: 43 de sexto (los 33 anteriores y 10 nuevos) y 20 de tercero.
 
-Incluye también una pantalla de **1.º de Bachillerato de Galicia**, modalidad Ciencias y Tecnología: Matemáticas I y Física (dentro de Física y Química). Es una selección inicial de **3 documentos externos con ejercicios existentes**, no un banco de ejercicios integrados ni cobertura completa del currículo. No se inventan enunciados, pistas, niveles ni soluciones para estos documentos.
+Incluye también una pantalla de **1.º de Bachillerato de Galicia**, modalidad Ciencias y Tecnología: Matemáticas I y Física (dentro de Física y Química). Contiene **14 ejercicios integrados** (7 de álgebra y 7 de cinemática) adaptados de materiales CC BY-NC-SA de la Xunta, además de 3 documentos externos. En total hay 77 ejercicios. Es una selección inicial, no cobertura completa del currículo. Los enunciados se traducen del gallego conservando datos y operaciones; las pistas, pasos y niveles son elaboración de esta web, no texto ni calificación oficial.
 
 La portada permite elegir curso antes de entrar en materias y temas. Cada curso tiene una pantalla independiente y un enlace directo: `/#/curso/sexto` y `/#/curso/tercero`. Se puede volver a la portada y usar Atrás/Adelante del navegador. No requiere reglas de redirección ni un build en Pages. Cambiar de curso limpia filtros, cajones abiertos y respuestas reveladas; los resultados y la impresión no mezclan cursos.
 
@@ -64,6 +64,7 @@ El workflow `Validar aula / validar` comprueba contenido, lógica, autenticació
 | `steps` | Explicación ordenada |
 | `tags` | Palabras de búsqueda, sin datos de personas reales |
 | `chart` (opcional) | `caption`, `categoryLabel`, `valueLabel` y `values` con `label` y `value` |
+| `source` (obligatorio en temas con `requiresSource: true`) | `author`, `title`, `url`, `recordUrl`, `locator`, `license`, `adaptation`, `verifiedOn` |
 
 Contenido de texto, **sin HTML**. Se valida tanto localmente/CI como al cargar el sitio, y se renderiza con `textContent`. Si falla un archivo, la web muestra un error y permite reintentar; no sirve una lista parcial aparentando éxito.
 
@@ -81,9 +82,19 @@ Comprobados el 04/10/2026 mediante acceso al PDF, portada/sección y número de 
 | Física | [Ficha Cinemática de la Xunta](https://recursos.edu.xunta.gal/es/recurso/cinematica) | `Unidade08/arquivos/actividades.pdf`, 21 páginas; gallego |
 | Física | Misma ficha | `Unidade08/arquivos/apoio.pdf`, 4 páginas; gallego |
 
-Son materiales docentes publicados en sitios educativos públicos, **no exámenes oficiales ni aval de esta web**. En Matemáticas no se ha verificado permiso de reproducción: se enlaza, sin copiar. La ficha de Física atribuye el recurso a la Consellería de Cultura, Educación e O.U e indica Creative Commons BY-NC-SA; tampoco se reproduce aquí.
+Son materiales docentes publicados en sitios educativos públicos, **no exámenes oficiales ni aval de esta web**. El cuaderno del IES Álvaro Cunqueiro se enlaza, sin copiar, por no tener permiso de reproducción verificado. Los originales externos se conservan; la selección integrada con licencia verificada se detalla a continuación.
 
-La ficha de Física está fechada el 04/07/2013 y la portada del cuaderno de Matemáticas no acredita actualización curricular. La referencia de etapa es el [Decreto 157/2022 de Galicia](https://www.xunta.gal/dog/Publicados/2022/20220926/AnuncioG0655-190922-0003_es.html); no se ha realizado una auditoría integral de adecuación ni de todos los resultados originales. Consultar el profesorado. No usar PAU/ABAU de segundo como si fuera una prueba de primero. Se descartó el recurso genérico de Matemáticas de 2013 del repositorio para no confundir modalidad con Matemáticas I.
+La ficha de Física está fechada el 04/07/2013 y la portada del cuaderno de Matemáticas no acredita actualización curricular. La referencia de etapa es el [Decreto 157/2022 de Galicia](https://www.xunta.gal/dog/Publicados/2022/20220926/AnuncioG0655-190922-0003_es.html); no se ha realizado una auditoría integral de adecuación ni de todos los resultados originales. Consultar el profesorado. No usar PAU/ABAU de segundo como si fuera una prueba de primero.
+
+#### Extracción a tarjetas (04/10/2026)
+
+No se ha copiado el cuaderno del IES Álvaro Cunqueiro: su permiso sigue sin verificar. El álgebra procede de **otro recurso**, [Matemáticas - 1º de Bacharelato](https://recursos.edu.xunta.gal/es/recurso/matematicas-1o-de-bacharelato), elaborado por el IES San Clemente y atribuido por la ficha a la Consellería de Cultura, Educación e O.U, publicado el 27/06/2013 con CC BY-NC-SA. Su ficha no especifica modalidad: se seleccionan contenidos de álgebra comunes, no se afirma que el curso completo sea Matemáticas I. En el archivo enlazado en cada tarjeta, el PDF es `course_files/unidade03/arquivos/actividades.pdf`: ejercicios 2, 4, 6, 8a, 9a y 10 de página 1 y ejercicio 20 de página 2.
+
+Física procede de `Unidade08/arquivos/actividades.pdf`: sección 1, ejemplos 1–3; sección 2, ejemplos 1–2 de página 1 y ejemplo 4 de página 2; sección 3, ejemplo 1 de página 2. Se omiten actividades dependientes de figuras o con formulaciones ambiguas no resueltas. No se copian imágenes.
+
+Cada tarjeta conserva enlace de origen, ficha con licencia, autoría, localizador exacto y cambios. Se traduce a español, se explicitan unidades, se añade el dominio en la división algebraica y se recalculan resultados sin redondeos intermedios. No se inventan datos nuevos. Las pistas y soluciones paso a paso son de Aula sexto, no atribuidas a la Xunta. Las pruebas verifican las identidades polinómicas, raíces, unidades SI y resultados numéricos de la selección; no todos los ejercicios de los PDFs.
+
+**Licencia de estas 14 adaptaciones (enunciados, pistas y pasos): CC BY-NC-SA, igual que la indicada por las fichas, que no especifican versión.** Conservar la atribución; uso no comercial; compartir adaptaciones bajo la misma licencia. No atribuir esta licencia al resto del código o contenido. La atribución y aviso de adaptación se mantienen también en la hoja impresa sin soluciones; los documentos externos no se imprimen desde la web.
 
 Para añadir ejercicios, editar el JSON del tema o su lista en Decap. Para añadir cursos/materias/temas, crear sus archivos de contenido, actualizar el catálogo (incluida la asignación de materias a cursos) y añadir las colecciones de archivos correspondientes en `editor/assets/config.yml`. Mantener las rutas sincronizadas, actualizar pruebas de recuento cuando cambie la colección inicial y ejecutar validación antes de publicar. La navegación se genera del catálogo, sin modificar la lógica de la interfaz.
 

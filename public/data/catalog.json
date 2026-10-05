@@ -3,7 +3,7 @@
   "courses": [
     { "id": "sexto", "title": "6.º de Primaria", "region": "Comunidad de Madrid", "description": "Afianza lo que sabes y atrévete con nuevos retos de matemáticas y lógica.", "subjects": ["matematicas"] },
     { "id": "tercero", "title": "3.º de Primaria", "region": "Comunidad de Madrid", "description": "Descubre números, medidas, formas y problemas cotidianos, paso a paso.", "subjects": ["matematicas-tercero"] },
-    { "id": "bachillerato-galicia", "title": "1.º de Bachillerato", "region": "Galicia", "description": "Ciencias y Tecnología: Matemáticas I y Física (parte de Física y Química). Documentos originales con ejercicios, publicados en portales educativos de Galicia; sin enunciados ni soluciones inventados.", "subjects": ["matematicas-bachillerato", "fisica-bachillerato"] }
+    { "id": "bachillerato-galicia", "title": "1.º de Bachillerato", "region": "Galicia", "description": "Ciencias y Tecnología: Matemáticas I y Física (parte de Física y Química). 14 ejercicios existentes de la Xunta traducidos al español, con pistas y soluciones recalculadas por esta web. Selección inicial, no todo el temario ni exámenes oficiales.", "subjects": ["matematicas-bachillerato", "fisica-bachillerato"] }
   ],
   "subjects": [
     {
@@ -36,17 +36,17 @@
     {
       "id": "matematicas-bachillerato",
       "title": "Matemáticas I",
-      "description": "Cuaderno de refuerzo para 1.º de Bachillerato de Ciencias alojado por el IES Álvaro Cunqueiro. Se enlaza el original; no se reproduce su contenido.",
+      "description": "Siete ejercicios de álgebra extraídos del material CC BY-NC-SA de la Xunta. El cuaderno del IES Álvaro Cunqueiro se mantiene solo como enlace.",
       "topics": [
-        { "id": "algebra-trigonometria-bachillerato", "title": "Álgebra y trigonometría", "description": "Selección inicial, no cobertura completa de Matemáticas I. La publicación en un centro público no convierte estos ejercicios en un examen oficial.", "file": "/data/matematicas-bachillerato/algebra-trigonometria-bachillerato.json" }
+        { "id": "algebra-trigonometria-bachillerato", "title": "Álgebra y trigonometría", "description": "Álgebra integrada: traducción de actividades de la unidad 3 de Matemáticas de 1.º de Bachillerato (2013). Selección de contenidos comunes útiles para Matemáticas I, sin atribuir al recurso original una modalidad que su ficha no especifica. Trigonometría disponible en el documento externo.", "requiresSource": true, "file": "/data/matematicas-bachillerato/algebra-trigonometria-bachillerato.json" }
       ]
     },
     {
       "id": "fisica-bachillerato",
       "title": "Física · Física y Química",
-      "description": "Hojas originales de cinemática del repositorio educativo de la Xunta, catalogadas para 1.º de Bachillerato, en gallego.",
+      "description": "Siete ejercicios de cinemática del repositorio educativo de la Xunta, traducidos del gallego al español. Conservan los datos originales y muestran la procedencia.",
       "topics": [
-        { "id": "cinematica-bachillerato", "title": "Cinemática", "description": "Material docente de 2013: referencia, movimiento rectilíneo y circular. No es un examen oficial ni una colección revisada íntegramente frente al currículo de 2022.", "file": "/data/fisica-bachillerato/cinematica-bachillerato.json" }
+        { "id": "cinematica-bachillerato", "title": "Cinemática", "description": "Material docente de 2013: referencia, movimiento rectilíneo y circular. Traducción con pistas y soluciones recalculadas por esta web. No es un examen oficial ni una colección revisada íntegramente frente al currículo de 2022.", "requiresSource": true, "file": "/data/fisica-bachillerato/cinematica-bachillerato.json" }
       ]
     }
   ]

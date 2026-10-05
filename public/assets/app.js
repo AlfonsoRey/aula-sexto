@@ -108,6 +108,7 @@ function card(exercise) {
   article.setAttribute("aria-labelledby", title.id);
   heading.append(title, element("span", "level", LEVELS[exercise.difficulty]));
   article.append(heading, element("p", "", exercise.statement));
+  if (exercise.source) article.append(sourceAttribution(exercise.source, true));
   if (exercise.chart) article.append(chart(exercise.chart, true));
   const actions = element("div", "exercise-actions");
   const hint = disclosure(exercise, "hints");
@@ -115,6 +116,23 @@ function card(exercise) {
   actions.append(hint.button, solution.button);
   article.append(actions, hint.content, solution.content);
   return article;
+}
+
+function sourceAttribution(source, linked) {
+  const block = element("div", "source-attribution");
+  block.append(element("p", "", `Fuente: ${source.author} · ${source.title} · ${source.locator}`),
+    element("p", "", `${source.license}. ${source.adaptation}`),
+    element("p", "", `Comprobado: ${source.verifiedOn.split("-").reverse().join("/")}. Nivel asignado por esta web, no por la Xunta. Material docente de 2013, no examen oficial ni aval de esta adaptación.`));
+  if (linked) {
+    const link = element("a", "", "Consultar original y licencia en la Xunta (nueva pestaña; puede contener soluciones)");
+    link.href = source.recordUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    block.append(link);
+  } else {
+    block.append(element("p", "", `Ficha y licencia: ${source.recordUrl}`));
+  }
+  return block;
 }
 
 function resourceCard(resource) {
@@ -166,6 +184,7 @@ function preparePrint(selected) {
       for (const exercise of exercises) {
         const article = element("article", "print-exercise");
         article.append(element("h3", "", `${++index}. ${exercise.title} (${LEVELS[exercise.difficulty]})`), element("p", "", exercise.statement));
+        if (exercise.source) article.append(sourceAttribution(exercise.source, false));
         if (exercise.chart) article.append(chart(exercise.chart, false));
         const space = element("div", "answer-space");
         space.setAttribute("aria-hidden", "true");
@@ -315,7 +334,8 @@ async function load() {
       const tile = element("article", "subject");
       const count = exercises.filter((exercise) => course.subjects.includes(exercise.subject)).length;
       const documents = resources.filter((resource) => course.subjects.includes(resource.subject)).length;
-      tile.append(element("span", "subject-number", `${course.region} · ${count ? `${count} EJERCICIOS` : `${documents} DOCUMENTOS EXTERNOS`}`), element("h3", "", course.title), element("p", "", course.description));
+      const counts = [count ? `${count} EJERCICIOS` : "", documents ? `${documents} DOCUMENTOS EXTERNOS` : ""].filter(Boolean).join(" · ");
+      tile.append(element("span", "subject-number", `${course.region} · ${counts}`), element("h3", "", course.title), element("p", "", course.description));
       const link = element("a", "course-link", `Entrar en ${course.title}`);
       link.href = `#/curso/${course.id}`;
       tile.append(link);

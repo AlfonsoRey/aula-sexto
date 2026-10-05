@@ -1,11 +1,152 @@
 {
   "topic": "cinematica-bachillerato",
-  "exercises": [],
+  "exercises": [
+    {
+      "id": "bach-fisica-velocidad-media",
+      "title": "Vector velocidad media",
+      "difficulty": "inicial",
+      "statement": "El vector de posición de un móvil en un instante es r₁ = 7i − 2j y, al cabo de 3 s, es r₂ = 4i + 4j. Determina su velocidad media y el módulo de esta. Las posiciones están expresadas en metros; i y j son vectores unitarios.",
+      "hints": ["Calcula el desplazamiento r₂ − r₁ componente a componente.", "Divide el vector desplazamiento por el tiempo transcurrido. El módulo de un vector (a, b) es √(a² + b²)."],
+      "solution": "v̄ = −i + 2j m/s; |v̄| = √5 m/s ≈ 2,24 m/s.",
+      "steps": ["Δr = (4 − 7)i + (4 − (−2))j = −3i + 6j m.", "Δt = 3 s, por lo que v̄ = Δr/Δt = −i + 2j m/s.", "|v̄| = √((−1)² + 2²) = √5 m/s ≈ 2,24 m/s.", "Es el módulo de la velocidad media, no necesariamente la rapidez media: no conocemos la distancia total recorrida."],
+      "tags": ["cinemática", "vectores", "velocidad media", "desplazamiento"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 1, sección 1, ejemplo 1; solución original en página 5",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se explicitan metros y vectores unitarios para eliminar ambigüedad de unidades; se conservan los datos.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-aceleracion-vector",
+      "title": "Aceleración media y velocidad posterior",
+      "difficulty": "intermedio",
+      "statement": "Un móvil tiene velocidad v₀ = 6i − 3j en t = 0 s. A los 3 s, su velocidad es v₃ = 18i − 6j; ambas están expresadas en m/s. a) Determina el vector aceleración media y su módulo. b) Suponiendo constante la aceleración, calcula la velocidad cuando hayan transcurrido 7 s desde el inicio.",
+      "hints": ["La aceleración media es (v₃ − v₀)/(3 s).", "Si la aceleración es constante, v(t) = v₀ + at. Para el apartado b utiliza 7 s desde el inicio, no 7 s después de t = 3 s."],
+      "solution": "ā = 4i − j m/s²; |ā| = √17 m/s² ≈ 4,12 m/s². v(7 s) = 34i − 10j m/s.",
+      "steps": ["Δv = (18 − 6)i + (−6 − (−3))j = 12i − 3j m/s.", "Divide por 3 s: ā = 4i − j m/s².", "Su módulo es √(4² + (−1)²) = √17 m/s² ≈ 4,12 m/s².", "Con aceleración constante, v(7 s) = (6i − 3j) + (4i − j)·7 = 34i − 10j m/s.", "En t = 3 s la ecuación devuelve 18i − 6j m/s, que coincide con el dato."],
+      "tags": ["cinemática", "vectores", "aceleración", "velocidad"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 1, sección 1, ejemplo 2; solución original en página 5",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se escriben explícitamente las unidades SI y se conservan ambos apartados.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-aceleracion-cd",
+      "title": "Aceleración normal en el borde de un CD",
+      "difficulty": "intermedio",
+      "statement": "Una grabadora de CD gira a 400 rpm. Si el CD tiene un diámetro de 12 cm, calcula la aceleración normal de un punto situado en el borde del disco.",
+      "hints": ["El radio es la mitad del diámetro. Exprésalo en metros.", "Convierte rpm a rad/s multiplicando por 2π/60. Después usa aₙ = ω²r."],
+      "solution": "aₙ = (32π²/3) m/s² ≈ 105,28 m/s², dirigida hacia el centro.",
+      "steps": ["El radio es r = 12/2 cm = 6 cm = 0,06 m.", "ω = 400·2π/60 = 40π/3 rad/s.", "aₙ = ω²r = (40π/3)²·0,06 = 32π²/3 m/s².", "Sin redondear ω antes del cálculo, resulta aₙ ≈ 105,28 m/s². La aceleración normal apunta hacia el centro."],
+      "tags": ["cinemática", "movimiento circular", "rpm", "aceleración normal", "centrípeta"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 1, sección 1, ejemplo 3; solución original en página 6",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada sin redondeo intermedio. No se cambian los datos.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-ecuaciones-mru",
+      "title": "Ecuaciones de un movimiento uniforme",
+      "difficulty": "inicial",
+      "statement": "Un cuerpo que se mueve hacia la derecha con velocidad constante de 3 m/s está situado 15 m a la derecha del origen cuando comienza a contarse el tiempo. Escribe las ecuaciones que describen su movimiento.",
+      "hints": ["Elige el eje positivo hacia la derecha. La posición inicial es positiva.", "En un movimiento rectilíneo uniforme, x(t) = x₀ + vt y la aceleración es cero."],
+      "solution": "x(t) = 15 + 3t (x en m y t en s); v(t) = 3 m/s; a(t) = 0 m/s².",
+      "steps": ["Tomamos el eje positivo hacia la derecha y t = 0 al comenzar a contar.", "La posición inicial es x₀ = 15 m y la velocidad es v = 3 m/s.", "Sustituimos en x = x₀ + vt: x(t) = 15 + 3t, con x en m y t en s.", "La velocidad es constante, v(t) = 3 m/s, por lo que a(t) = 0 m/s²."],
+      "tags": ["cinemática", "MRU", "posición", "velocidad", "ecuaciones"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 1, sección 2, ejemplo 1; solución original en página 6",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se usa x para la posición que el original representa por s y se explicita la aceleración nula.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-llegada-origen",
+      "title": "Tiempo para alcanzar el origen",
+      "difficulty": "inicial",
+      "statement": "Un cuerpo se mueve hacia el origen con velocidad constante de 2,3 m/s. Si inicialmente está a una distancia de 100 m del origen, ¿cuánto tiempo tardará en pasar por él?",
+      "hints": ["Elige la posición inicial como x₀ = 100 m. Como se acerca al origen, su velocidad será negativa en ese eje.", "Impón x(t) = 0 en la ecuación del movimiento, o divide la distancia entre la rapidez."],
+      "solution": "t = 100/2,3 s = 1000/23 s ≈ 43,48 s.",
+      "steps": ["Elegimos un eje con x₀ = 100 m y v = −2,3 m/s.", "La ecuación es x(t) = 100 − 2,3t, con x en m y t en s.", "Al pasar por el origen, 0 = 100 − 2,3t.", "Despejamos: t = 100/2,3 = 1000/23 s ≈ 43,48 s. Es positivo, como corresponde a un instante posterior."],
+      "tags": ["cinemática", "MRU", "tiempo", "velocidad", "origen"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 1, sección 2, ejemplo 2; solución original en página 7",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se conservan los datos y se muestran más decimales que el original.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-interpretar-posicion",
+      "title": "Interpretar una ecuación de posición",
+      "difficulty": "intermedio",
+      "statement": "El movimiento de un cuerpo obedece a s = −12 + 5t, con s en metros y t en segundos. a) Indica el tipo de movimiento y haz un esquema de su trayectoria. b) ¿Qué aspecto tendrán las gráficas s-t y v-t? c) ¿Cuánto tiempo tardará en pasar por el origen?",
+      "hints": ["Compara s = −12 + 5t con s = s₀ + vt. Aquí s es posición, no distancia acumulada.", "La gráfica posición-tiempo de un MRU es una recta. El paso por el origen corresponde a s = 0."],
+      "solution": "MRU con s₀ = −12 m, v = 5 m/s y a = 0. La gráfica s-t es una recta creciente que parte de −12 m; v-t es horizontal en 5 m/s. Pasa por el origen a los 2,4 s.",
+      "steps": ["a) Es un movimiento rectilíneo uniforme: s₀ = −12 m y v = 5 m/s constante.", "Para el esquema, dibuja un eje: en t = 0 está en −12 m y avanza en el sentido positivo; en t = 1 s está en −7 m y en t = 2 s, en −2 m.", "b) La gráfica s-t es una recta de pendiente 5 m/s y ordenada inicial −12 m. La gráfica v-t es una línea horizontal en 5 m/s.", "c) En el origen, s = 0: 0 = −12 + 5t, de donde t = 12/5 = 2,4 s."],
+      "tags": ["cinemática", "MRU", "gráficas", "posición", "velocidad"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 2, sección 2, ejemplo 4; solución original en páginas 8 y 9",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se explicitan las unidades y se describe el esquema mediante posiciones, sin copiar figuras.",
+        "verifiedOn": "2026-10-04"
+      }
+    },
+    {
+      "id": "bach-fisica-noria",
+      "title": "Movimiento circular de una noria",
+      "difficulty": "intermedio",
+      "statement": "La noria de un parque de atracciones tiene un radio de 10 m y gira a velocidad constante de 1,5 vueltas por minuto. Calcula su velocidad angular en rad/s, la velocidad lineal de un pasajero y el ángulo que gira en 40 s.",
+      "hints": ["Una vuelta equivale a 2π radianes y un minuto, a 60 segundos.", "Usa v = ωr y Δθ = ωΔt. La velocidad lineal pedida se expresa mediante su módulo."],
+      "solution": "ω = π/20 rad/s ≈ 0,1571 rad/s; v = π/2 m/s ≈ 1,57 m/s; Δθ = 2π rad (una vuelta).",
+      "steps": ["ω = 1,5·2π/60 = π/20 rad/s.", "El módulo de la velocidad lineal es v = ωr = (π/20)·10 = π/2 m/s ≈ 1,57 m/s.", "En 40 s gira Δθ = ω·40 = (π/20)·40 = 2π rad.", "2π rad equivale a una vuelta completa. Es el ángulo recorrido, aunque termina en la misma orientación."],
+      "tags": ["cinemática", "movimiento circular", "velocidad angular", "radianes", "noria"],
+      "source": {
+        "author": "Consellería de Cultura, Educación e O.U · Xunta de Galicia, según la ficha del recurso",
+        "title": "Unidade 8. Cinemática · Exercicios autoavaliables",
+        "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
+        "recordUrl": "https://recursos.edu.xunta.gal/es/recurso/cinematica",
+        "locator": "actividades.pdf · página 2, sección 3, ejemplo 1; solución original en página 9",
+        "license": "CC BY-NC-SA (versión no indicada en la ficha); adaptación bajo la misma licencia",
+        "adaptation": "Aula sexto: traducción, título, dificultad, pistas y pasos propios; solución recalculada. Se conservan los datos y se distingue ángulo recorrido de orientación final.",
+        "verifiedOn": "2026-10-04"
+      }
+    }
+  ],
   "resources": [
     {
       "id": "bach-fisica-cinematica-actividades",
       "title": "Cinemática · Ejercicios autoevaluables",
-      "statement": "PDF original de 21 páginas, en gallego. Incluye ejemplos sobre vectores de posición, velocidad media, aceleración y movimiento circular. Los enunciados y las explicaciones se consultan en la fuente, sin traducciones ni respuestas añadidas por esta web.",
+      "statement": "PDF original de 21 páginas, en gallego. Incluye ejemplos sobre vectores de posición, velocidad media, aceleración y movimiento circular. Siete de sus ejercicios están también en tarjetas traducidas al español, con pistas y soluciones recalculadas por esta web.",
       "tags": ["cinemática", "vectores", "velocidad", "aceleración", "movimiento", "autoevaluación"],
       "source": {
         "url": "https://recursos.edu.xunta.gal/sites/default/files/recurso/1372921444/Unidade08/arquivos/actividades.pdf",
